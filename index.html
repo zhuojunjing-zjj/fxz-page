@@ -27,6 +27,216 @@
         
         /* Nav */
         .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding-top: 4px; padding-bottom: 4px; }
+        .navbar-brand-group { display: flex; align-items: center; gap: 24px; }
+.navbar-brand-group .brand-left { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.navbar-brand-group .brand-main { font-weight: 800; color: var(--primary); font-size: 2.0rem; }
+.navbar-brand-group .brand-sub { font-size: 2.0rem; color: var(--text-muted); line-height: 1; }
+.navbar-brand-group .brand-right { font-size: 2.0rem; color: var(--text-muted); line-height: 1.2; }
+.navbar-brand-group .brand-right span { display: block; }
+        
+        /* Cards */
+        .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+        .section-sub { color: var(--text-muted); margin-bottom: 32px; }
+        
+        .software-card {
+            background: var(--card-bg); border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px; padding: 24px; transition: all 0.25s;
+            display: flex; gap: 20px; align-items: flex-start;
+        }
+        .software-card:hover {
+            transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: rgba(99,102,241,0.2);
+        }
+        .software-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: #fff; flex-shrink: 0;
+        }
+        .software-info { flex: 1; }
+        .software-info h3 { font-size: 1.15rem; font-weight: 700; margin: 0 0 6px; }
+        .software-info .desc { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 10px; line-height: 1.5; }
+        .badge-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; margin-right: 6px; }
+        .btn-download {
+            background: var(--primary); color: #fff; border: none;
+            border-radius: 10px; padding: 8px 20px; font-weight: 600;
+            font-size: 0.9rem; transition: all 0.2s; white-space: nowrap;
+        }
+        .btn-download:hover { background: var(--primary-dark); color: #fff; transform: scale(1.03); }
+        
+        /* Footer */
+        .footer {
+            text-align: center; padding: 32px 0; color: var(--text-muted);
+            font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.06); margin-top: 60px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 60px 0 40px; }
+            .software-card { flex-direction: column; text-align: center; align-items: center; }
+            .btn-download { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <div class="navbar-brand-group">
+            <div class="brand-left">
+                <span class="brand-main">FXZ</span>
+                <span class="brand-sub">分享站</span>
+            </div>
+            <div class="brand-right">
+                <span>HTTPS://FXZ.CC.CD</span>
+                <span>陪伴所有电脑使用者度过美好的每一天</span>
+            </div>
+        </div>
+        <div class="ms-auto">
+            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill px-3">关于</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>实用软件 · 免费分享</h1>
+        <p>精选高效工具，提升你的工作与生活效率。所有软件均经过实测，安全可靠。</p>
+    </div>
+</section>
+
+<!-- Software List -->
+<section class="container my-5">
+    <h2 class="section-title">推荐软件</h2>
+    <p class="section-sub">以下是我日常使用并推荐的高效工具</p>
+    
+    <div class="row g-4" id="software-list">
+        <!-- Card templates will be injected here -->
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 FXZ. Powered by GitHub Pages · Domain fxz.cc.cd</p>
+    </div>
+</footer>
+
+<script>
+// 软件数据 - 在此添加你的软件
+const softwares = [
+    {
+        name: "7-Zip",
+        desc: "开源免费的高压缩比文件压缩工具，支持多种格式，轻量无广告。",
+        icon: "bi-file-zip",
+        color: "#8b5cf6",
+        tags: ["压缩", "开源", "Windows"],
+        url: "https://7-zip.org/"
+    },
+    {
+        name: "VLC Media Player",
+        desc: "万能视频播放器，支持几乎所有音视频格式，无需额外安装解码器。",
+        icon: "bi-play-circle",
+        color: "#f97316",
+        tags: ["播放器", "开源", "全平台"],
+        url: "https://www.videolan.org/"
+    },
+    {
+        name: "Everything",
+        desc: "极速文件搜索工具，秒级索引全盘文件，比系统搜索快百倍。",
+        icon: "bi-search",
+        color: "#eab308",
+        tags: ["搜索", "效率", "Windows"],
+        url: "https://www.voidtools.com/"
+    },
+    {
+        name: "Snipaste",
+        desc: "截图 + 贴图神器，支持截图后贴到屏幕上做参考，设计/开发必备。",
+        icon: "bi-scissors",
+        color: "#ef4444",
+        tags: ["截图", "效率", "Windows/Mac"],
+        url: "https://www.snipaste.com/"
+    },
+    {
+        name: "Geek Uninstaller",
+        desc: "轻量级软件卸载工具，彻底清除残留文件和注册表项。",
+        icon: "bi-trash3",
+        color: "#06b6d4",
+        tags: ["卸载", "清理", "Windows"],
+        url: "https://geekuninstaller.com/"
+    },
+    {
+        name: "OBS Studio",
+        desc: "免费开源的录屏和直播推流软件，功能强大，插件生态丰富。",
+        icon: "bi-camera-video",
+        color: "#22c55e",
+        tags: ["录屏", "直播", "开源"],
+        url: "https://obsproject.com/"
+    }
+];
+
+function renderSoftware() {
+    const container = document.getElementById('software-list');
+    softwares.forEach(sw => {
+        const card = document.createElement('div');
+        card.className = 'col-lg-6';
+        card.innerHTML = `
+            <div class="software-card h-100">
+                <div class="software-icon" style="background:${sw.color}">
+                    <i class="bi ${sw.icon}"></i>
+                </div>
+                <div class="software-info">
+                    <h3>${sw.name}</h3>
+                    <p class="desc">${sw.desc}</p>
+                    <div class="mb-2">
+                        ${sw.tags.map(t => `<span class="badge-tag bg-light text-secondary border">${t}</span>`).join('')}
+                    </div>
+                </div>
+                <a href="${sw.url}" target="_blank" class="btn-download text-decoration-none">
+                    <i class="bi bi-download me-1"></i>下载
+                </a>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+renderSoftware();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FXZ - 软件分享</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+        }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; padding: 80px 0 60px; text-align: center;
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 480px; margin: 16px auto 0; line-height: 1.8; }
+        
+        /* Nav */
+        .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding-top: 4px; padding-bottom: 4px; }
         .navbar-brand-group { display: flex; align-items: center; gap: 12px; }
 .navbar-brand-group .brand-main { font-weight: 800; color: var(--primary); font-size: 3.0rem; line-height: 1; }
 .navbar-brand-group .brand-sub { font-size: 3.0rem; color: var(--text-muted); line-height: 1.1; }
