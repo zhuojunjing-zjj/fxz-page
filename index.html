@@ -44,6 +44,21 @@
 
         .txt-row { white-space: nowrap; }
 
+        .software-section { padding: 60px 0; }
+        .software-section h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 40px; color: #1e293b; }
+        .software-card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); display: flex; gap: 24px; align-items: center; }
+        .software-icon { width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .software-icon svg { width: 48px; height: 48px; }
+        .software-info { flex: 1; }
+        .software-info h3 { font-size: 1.4rem; font-weight: 700; margin: 0 0 8px 0; color: #1e293b; }
+        .software-info p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin: 0; }
+        .btn-download { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%); color: #fff; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); color: #fff; }
+
+        @media (max-width: 768px) {
+            .software-card { flex-direction: column; text-align: center; }
+        }
+
         @media (max-width: 992px) {
             .hero-left, .hero-right { display: none; }
             .hero h1 { font-size: 2rem; }
@@ -93,6 +108,25 @@
 
         </div>
 
+    </div>
+</section>
+
+<section class="software-section">
+    <div class="container" style="max-width:800px;">
+        <h2>软件分享</h2>
+        <div class="software-card">
+            <div class="software-icon" style="background:#f97316;">
+                <img src="https://cdn.jsdelivr.net/gh/videolan/vlc@master/share/icons/256x256/vlc.png" alt="VLC" width="48" height="48" style="display:block;">
+            </div>
+            <div class="software-info">
+                <h3>VLC Media Player</h3>
+                <p>VLC 是一款自由、开源的跨平台多媒体播放器，支持播放几乎所有格式的音频和视频文件，包括 MPEG、DivX、MKV、MP3 等，无需额外安装解码器。简洁无广告，被誉为万能播放器。</p>
+            </div>
+            <a href="https://www.videolan.org/vlc/" target="_blank" class="btn-download">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
     </div>
 </section>
 
