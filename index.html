@@ -27,12 +27,12 @@
         
         /* Nav */
         .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding-top: 4px; padding-bottom: 4px; }
-        .navbar-brand-group { display: flex; align-items: center; gap: 24px; }
-.navbar-brand-group .brand-left { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+        .navbar-brand-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.navbar-brand-group .brand-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
 .navbar-brand-group .brand-main { font-weight: 800; color: var(--primary); font-size: 2.0rem; }
 .navbar-brand-group .brand-sub { font-size: 2.0rem !important; color: #1e293b; line-height: 1; font-weight: 700; }
-.navbar-brand-group .brand-right { font-size: 2.0rem; color: #1e293b; line-height: 1.2; font-weight: 700; text-align: center; }
-.navbar-brand-group .brand-right span { display: block; }
+.navbar-brand-group .brand-url { font-size: 2.0rem; color: #1e293b; font-weight: 700; }
+.navbar-brand-group .brand-slogan { font-size: 2.0rem; color: #1e293b; font-weight: 700; display: block; }
         
         /* Cards */
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
@@ -84,14 +84,12 @@
 <nav class=navbar navbar-expand-lg sticky-top>
     <div class=container d-flex justify-content-center>
         <div class=navbar-brand-group>
-            <div class=brand-left>
+            <div class=brand-row>
                 <span class=brand-main>FXZ</span>
                 <span class=brand-sub>分享站</span>
             </div>
-            <div class=brand-right>
-                <span>HTTPS://FXZ.CC.CD</span>
-                <span>陪伴所有电脑使用者度过美好的每一天</span>
-            </div>
+            <span class=brand-url>HTTPS://FXZ.CC.CD</span>
+            <span class=brand-slogan>陪伴所有电脑使用者度过美好的每一天</span>
         </div>
     </div>
 </nav>
