@@ -52,8 +52,11 @@
         .software-info { flex: 1; }
         .software-info h3 { font-size: 1.4rem; font-weight: 700; margin: 0 0 8px 0; color: #1e293b; }
         .software-info p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin: 0; }
-        .btn-download { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%); color: #fff; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
+        .btn-download { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%); color: #fff; border: none; padding: 10px 22px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; white-space: nowrap; }
         .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); color: #fff; }
+        .btn-outline { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; flex-shrink: 0; white-space: nowrap; border: 2px solid #94a3b8; color: #64748b; background: transparent; transition: all 0.2s; }
+        .btn-outline:hover { border-color: #6366f1; color: #6366f1; transform: translateY(-2px); }
+        .btn-group { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; align-items: center; }
 
         @media (max-width: 768px) {
             .software-card { flex-direction: column; text-align: center; }
@@ -122,7 +125,7 @@
                 <h3>VLC Media Player <span id="vlc-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;"></span></h3>
                 <p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。简洁无广告，无间谍软件，不跟踪用户行为。<br>视频格式：MPEG-1/2、DivX、MPEG-4 ASP、XviD、H.264/AVC、H.265/HEVC、WMV、VC-1、VP8/VP9、AV1、RealVideo 等。<br>音频格式：MP3、AAC、Vorbis、FLAC、ALAC、WMA、AC3、DTS、Opus、AMR 等。<br>字幕格式：MicroDVD、SubRIP、SubViewer、SSA/ASS、SAMI、VobSub、USF、DVD/Blu-ray 字幕等。</p>
             </div>
-            <a href="https://www.videolan.org/vlc/" target="_blank" class="btn-download">
+            <a href="https://www.videolan.org/" target="_blank" class="btn-download" style="background:#f97316;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -234,7 +237,7 @@
                 <h3>百分浏览器 Cent Browser <span id="centbrowser-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v5.1.1130.82</span></h3>
                 <p>基于 Chromium 内核的增强型浏览器，由百分工作室开发。<br>鼠标手势：自定义轨迹手势，提升浏览效率。<br>超级拖拽：拖拽文字搜索、拖拽链接后台打开。<br>实用功能：内存自动优化、小号标签页、滚动标签栏、内置截图、老板键。<br>特色优势：国内网银兼容性良好，持续同步更新 Chromium 内核。</p>
             </div>
-            <a href="https://www.centbrowser.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);">
+            <a href="https://www.centbrowser.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -248,7 +251,7 @@
                 <h3>Steam <span id="steam-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.10.91.91</span></h3>
                 <p>Valve 旗下全球最大数字游戏平台，支持 Windows / macOS / Linux。<br>海量游戏库：超 5 万款游戏，2025 年同时在线峰值约 4200 万。<br>一站式体验：购买、下载、社交、创意工坊于一体。<br>特色功能：云存档、家庭共享、远程同乐、Steam Input 手柄适配。<br>社区生态：评测系统、指南、截图分享、直播功能完善。</p>
             </div>
-            <a href="https://store.steampowered.com/about/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #171a21 0%, #2a3f5a 100%);">
+            <a href="https://store.steampowered.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #171a21 0%, #2a3f5a 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -262,7 +265,7 @@
                 <h3>Epic Games 启动器 <span id="epic-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v19.2.2</span></h3>
                 <p>Epic Games 官方游戏平台与启动器，支持 Windows / macOS。<br>每周喜加一：每周赠送免费游戏，永久入库。<br>虚幻引擎生态：全球领先的实时 3D 创作工具。<br>独占大作：如《黑神话：悟空》等高品质作品。<br>免费游戏：《Fortnite》《糖豆人》《Rocket League》持续运营。集商店、库、社交于一体。</p>
             </div>
-            <a href="https://store.epicgames.com/zh-CN/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2f2d2e 0%, #4a4a4a 100%);">
+            <a href="https://store.epicgames.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2f2d2e 0%, #4a4a4a 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -290,7 +293,7 @@
                 <h3>Geek Uninstaller <span id="geek-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.5.3</span></h3>
                 <p>轻量级卸载利器，单文件绿色便携，深度扫描清理残留文件及注册表。<br>支持强制卸载顽固/损坏程序，原生 x64 运行。<br>可卸载 Microsoft Store 应用，40+ 语言界面，启动迅速。</p>
             </div>
-            <a href="https://geekuninstaller.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
+            <a href="https://geekuninstaller.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -304,7 +307,7 @@
                 <h3>微信 <span id="weixin-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.1.11</span></h3>
                 <p>全能即时通讯，支持聊天、语音视频、文件传输、朋友圈及小程序。<br>Windows / macOS 双端统一体验，支持群接龙。<br>扫码登录安全便捷，消息多端实时同步。</p>
             </div>
-            <a href="https://windows.weixin.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
+            <a href="https://weixin.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -318,7 +321,7 @@
                 <h3>QQ <span id="qq-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v9.9.31</span></h3>
                 <p>经典即时通讯工具，全新 NT 架构，界面简约，支持语音输入与长截图。<br>支持多人语音视频通话、文件传输、QQ空间。<br>全新 UI 设计，消息页面三栏式高效浏览。</p>
             </div>
-            <a href="https://im.qq.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+            <a href="https://im.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -374,7 +377,7 @@
                 <h3>火绒安全软件 <span id="huorong-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.0.10</span></h3>
                 <p>轻量无打扰安全防护，集病毒查杀、弹窗拦截、流量监控于一体。<br>基于强大底层技术，反病毒/主动防御/防火墙三大模块深度整合。<br>智能行为分析，不依赖庞大病毒库，系统占用极低。</p>
             </div>
-            <a href="https://www.huorong.cn/person5.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+            <a href="https://www.huorong.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -388,7 +391,7 @@
                 <h3>Everything <span id="everything-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.4.1</span></h3>
                 <p>毫秒级文件搜索工具，仅索引文件名，极速定位磁盘任意文件。<br>1 秒索引 12 万文件，内存占用仅 14MB，安装包不到 2MB。<br>支持正则表达式、布尔运算符、实时更新，从 Windows 7 到 11 流畅运行。</p>
             </div>
-            <a href="https://www.voidtools.com/downloads/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+            <a href="https://www.voidtools.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -416,7 +419,7 @@
                 <h3>Notepad++ <span id="notepadpp-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v8.9.6</span></h3>
                 <p>免费开源轻量代码编辑器，支持80+语言语法高亮，插件生态丰富。<br>多标签编辑、代码折叠、宏录制、正则搜索替换。<br>中文界面友好，全程无捆绑，启动迅速，Windows 平台首选文本编辑器。</p>
             </div>
-            <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/releases" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
+            <a href="https://notepad-plus-plus.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -430,7 +433,7 @@
                 <h3>XnView MP <span id="xnview-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.11.2</span></h3>
                 <p>全能免费图片浏览器，支持500+格式，批量转换及元数据编辑。<br>支持 JPEG-XL、AVIF、HEIC、WebP、PSD、PDF、RAW 等主流格式。<br>内置批量重命名、重复图片查找、幻灯片、屏幕截图等功能。</p>
             </div>
-            <a href="https://www.xnview.com/en/xnview-mp/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
+            <a href="https://www.xnview.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -458,7 +461,7 @@
                 <h3>WeGame <span id="wegame-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.2.1</span></h3>
                 <p>腾讯一站式 PC 游戏平台，海量正版游戏极速下载，社区开黑。<br>集游戏购买、下载、启动、直播、社区交流于一体。<br>支持家长监控功能，全新 3.0 版本，高校认证、校友开黑。</p>
             </div>
-            <a href="https://pc-wegame.com.cn/download.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+            <a href="https://www.wegame.com.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
@@ -473,6 +476,91 @@
                 <p>开源内存修改工具，支持内存扫描、十六进制编辑、Lua 脚本扩展。<br>精准定位游戏进程内存地址，实时修改数值变量。<br>内置调试器、反汇编器、代码注入功能，仅供单机学习研究使用。</p>
             </div>
             <a href="https://www.cheatengine.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+        <!-- 豹图 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                <img src="http://bootgraph.com/favicon.ico" alt="豹图" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2306b6d4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 豹 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>豹图 <span id="bootgraph-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v9.3</span></h3>
+                <p>免费 CAD 快速看图算量，支持 DWG 格式、测量标注、分类汇总导出 Excel。<br>无需安装 CAD 即可秒开图纸，支持长度/角度/半径/面积智能测量。<br>独创 CAD 内置算量表格与 Excel 无缝交互，自由编辑、双向反查。</p>
+            </div>
+            <a href="http://bootgraph.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+        <!-- 驱动总裁 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                <img src="https://www.sysceo.com/favicon.ico" alt="驱动总裁" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%2210%22 width=%2236%22 height=%2228%22 rx=%224%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E 驱动 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>驱动总裁 <span id="drvceo-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.20</span></h3>
+                <p>全能驱动管理工具，在线离线双模式，笔记本台式机苹果 BootCamp 全兼容。<br>集在线和离线双模式，桌面和 PE 环境下均可安装硬件驱动。<br>庞大丰富的驱动库，界面友好，轻松解决硬件驱动各种问题。</p>
+            </div>
+            <a href="https://www.sysceo.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <!-- 钉钉 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+                <img src="https://www.dingtalk.com/favicon.ico" alt="钉钉" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230284c7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 钉 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>钉钉 <span id="dingtalk-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v8.3.30</span></h3>
+                <p>AI 时代企业协同办公平台，即时沟通、视频会议、智能审批一体化。<br>AI 听记：音视频秒转文字，9 种语言实时翻译，智能提炼核心要点。<br>AI 表格、AI 搜问、钉钉会议、智能人事，150 万家企业信赖之选。</p>
+            </div>
+            <a href="https://www.dingtalk.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+        <!-- 元宝 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <img src="https://yuanbao.qq.com/favicon.ico" alt="元宝" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23a855f7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 元 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>元宝 <span id="yuanbao-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.68</span></h3>
+                <p>腾讯 AI 全能助手，深度思考、联网搜索、AI 写作编程识图，混元大模型驱动。<br>AI 搜索：搜得更准答得更全，联网搜索公众号、视频号等腾讯生态信源。<br>AI 文档精读：支持 36 种文件格式，全局划词翻译搜索，迷你对话窗快捷启动。</p>
+            </div>
+            <a href="https://yuanbao.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+        <!-- 7-Zip -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                <img src="https://www.7-zip.org/favicon.ico" alt="7-Zip" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%226%22 fill=%22%236366f1%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3E7z%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>7-Zip <span id="7zip-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v26.02</span></h3>
+                <p>开源免费高压缩比文件归档工具，支持 7z/XZ/BZIP2 等格式，轻量无广告。<br>原生 64 位/ARM64 支持，安装包仅 1.6MB，压缩率远超传统工具。<br>AES-256 加密、自解压创建、命令行版本，Windows/Linux/macOS 全平台。</p>
+            </div>
+            <a href="https://www.7-zip.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+        <!-- 360压缩国际版 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #34d399 0%, #10b981 100%);">
+                <img src="https://www.360totalsecurity.com/favicon.ico" alt="360压缩国际版" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%2334d399%22/%3E%3Ctext x=%2224%22 y=%2230%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E360zip%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>360压缩国际版 <span id="360zip-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.0.0</span></h3>
+                <p>国际版无广告清爽压缩工具，支持 42 种格式，内置云安全引擎查杀木马。<br>智能选择最佳压缩方式，速度比传统软件快 40%，永久免费无广告。<br>AES-256 加密、自定义分卷，图片/视频/文档分类压缩优化。</p>
+            </div>
+            <a href="https://www.360totalsecurity.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #34d399 0%, #10b981 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
