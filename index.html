@@ -5,102 +5,147 @@
     <meta name=viewport content=width=device-width, initial-scale=1.0>
     <title>FXZ - 软件分享</title>
     <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css rel=stylesheet>
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css rel=stylesheet>
     <style>
         :root {
             --primary: #6366f1;
-            --primary-dark: #4f46e5;
             --bg: #f8fafc;
-            --card-bg: #ffffff;
             --text: #1e293b;
-            --text-muted: #64748b;
         }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        
-        /* Hero */
+
+        .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 4px 0; }
+
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff; padding: 80px 0 60px; text-align: center;
+            color: #fff; padding: 20px 0; text-align: center;
         }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.5px; }
-        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 480px; margin: 16px auto 0; line-height: 1.8; }
-        
-        /* Nav */
-        .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 4px 0; }
-        .navbar-brand-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
-.navbar-brand-group .brand-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
-.navbar-brand-group .brand-main { font-weight: 800; color: var(--primary); font-size: 2.0rem; }
-.navbar-brand-group .brand-sub { font-size: 2.0rem !important; color: #1e293b; line-height: 1; font-weight: 700; }
-.navbar-brand-group .brand-url { font-size: 2.0rem; color: #1e293b; font-weight: 700; }
-.navbar-brand-group .brand-slogan { font-size: 2.0rem; color: #1e293b; font-weight: 700; display: block; }
-        
-        /* Cards */
-        .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
-        .section-sub { color: var(--text-muted); margin-bottom: 32px; }
-        
-        .software-card {
-            background: var(--card-bg); border: none;
-            border-radius: 16px; padding: 24px; transition: all 0.25s;
-            display: flex; gap: 20px; align-items: flex-start;
+        .hero .container { max-width: none; }
+
+        .hero-blocks {
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+            gap: 20px;
         }
-        .software-card:hover {
-            transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-            border-color: rgba(99,102,241,0.2);
-        }
-        .software-icon {
-            width: 56px; height: 56px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: #fff; flex-shrink: 0;
-        }
-        .software-info { flex: 1; }
-        .software-info h3 { font-size: 1.15rem; font-weight: 700; margin: 0 0 6px; }
-        .software-info .desc { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 10px; line-height: 1.5; }
-        .badge-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; margin-right: 6px; }
-        .btn-download {
-            background: var(--primary); color: #fff; border: none;
-            border-radius: 10px; padding: 8px 20px; font-weight: 600;
-            font-size: 0.9rem; transition: all 0.2s; white-space: nowrap;
-        }
-        .btn-download:hover { background: var(--primary-dark); color: #fff; transform: scale(1.03); }
-        
-        /* Footer */
-        .footer {
-            text-align: center; padding: 32px 0; color: var(--text-muted);
-            font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.06); margin-top: 60px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
+
+        .hero-left   { display: flex; align-items: center; justify-content: center; }
+        .hero-mid    { text-align: center; }
+        .hero-right  { text-align: center; white-space: nowrap; }
+
+        .hero-mid > * + * { margin-top: 6px; }
+        .hero-right > * + * { margin-top: 6px; }
+
+        .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+
+        .desc-text { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+
+        .date-box { color: #fbbf24; }
+        .date-box .ymd { font-size: 2.8rem; font-weight: 600; white-space: nowrap; }
+        .date-box .dow  { font-size: 2.0rem; font-weight: 800; }
+        .date-box .hms  { font-size: 2.8rem; font-weight: 800; }
+
+        .txt-row { white-space: nowrap; }
+
+        @media (max-width: 992px) {
+            .hero-left, .hero-right { display: none; }
             .hero h1 { font-size: 2rem; }
-            .hero { padding: 60px 0 40px; }
-            .software-card { flex-direction: column; text-align: center; align-items: center; }
-            .btn-download { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class=navbar navbar-expand-lg sticky-top>
-    <div class=container d-flex justify-content-center>
-        <div class=navbar-brand-group>
-            <div class=brand-row>
-                <span class=brand-main>FXZ</span>
-                <span class=brand-sub>分享站</span>
-            </div>
-            <span class=brand-url>HTTPS://FXZ.CC.CD</span>
-            <span class=brand-slogan>陪伴所有电脑使用者度过美好的每一天</span>
-        </div>
-    </div>
+    <div class=container d-flex justify-content-center></div>
 </nav>
 
-<!-- Hero -->
 <section class=hero>
     <div class=container>
-        <h1>实用软件 · 免费分享</h1>
-        <p>精选高效工具，提升你的工作与生活效率。所有软件均经过实测，安全可靠。</p>
+
+        <div class=hero-blocks>
+
+            <!-- 左块：时钟 -->
+            <div class=hero-left>
+                <canvas id=clock-canvas width=170 height=170></canvas>
+            </div>
+
+            <!-- 中块：标题组 -->
+            <div class=hero-mid>
+                <div class=txt-row>
+                    <span style=color:#fbbf24;font-size:2.8rem;font-weight:800;>FXZ</span><span style=color:#e879f9;font-size:2.8rem;font-weight:800;>·</span><span style=color:#34d399;font-size:2.8rem;font-weight:800;>分</span><span style=color:#fb923c;font-size:2.8rem;font-weight:800;>享</span><span style=color:#a78bfa;font-size:2.8rem;font-weight:800;>站</span>
+                </div>
+                <div class=txt-row style=font-size:2.0rem;font-weight:700;>
+                    <span style=color:#fbbf24;>H</span><span style=color:#f472b6;>T</span><span style=color:#a78bfa;>T</span><span style=color:#34d399;>P</span><span style=color:#f97316;>S</span><span style=color:#94a3b8;>://</span><span style=color:#fbbf24;>F</span><span style=color:#f472b6;>X</span><span style=color:#a78bfa;>Z</span><span style=color:#fbbf24;>.</span><span style=color:#f472b6;>C</span><span style=color:#a78bfa;>C</span><span style=color:#34d399;>.</span><span style=color:#f97316;>C</span><span style=color:#fbbf24;>D</span>
+                </div>
+                <h1>
+                    <span style=color:#fbbf24;>实用</span><span style=color:#f472b6;>软件</span>
+                    <span style=color:#a78bfa;> · </span>
+                    <span style=color:#34d399;>免费</span><span style=color:#f97316;>分享</span>
+                </h1>
+                <p class=desc-text>
+                    <span style=color:#fbbf24;>陪伴</span><span style=color:#f472b6;>所有</span><span style=color:#38bdf8;>电脑</span><span style=color:#a78bfa;>使用者</span><span style=color:#34d399;>度过</span><span style=color:#fb923c;>美好</span><span style=color:#e879f9;>的</span><span style=color:#fbbf24;>每一天</span><span style=color:#94a3b8;>，</span><span style=color:#f472b6;>所有</span><span style=color:#38bdf8;>软件</span><span style=color:#a78bfa;>均</span><span style=color:#34d399;>经过</span><span style=color:#fb923c;>实测</span><span style=color:#fbbf24;>，</span><span style=color:#f472b6;>安全</span><span style=color:#38bdf8;>可靠</span>
+                </p>
+            </div>
+
+            <!-- 右块：日期组 -->
+            <div class=hero-right>
+                <div class=date-box><div class=ymd id=date-ymd></div></div>
+                <div class=date-box><div class=dow id=date-dow></div></div>
+                <div class=date-box><div class=hms id=date-hms></div></div>
+            </div>
+
+        </div>
+
     </div>
 </section>
+
+<script>
+(function() {
+    const canvas = document.getElementById('clock-canvas');
+    const ctx = canvas.getContext('2d');
+    const r = 80, cx = 85, cy = 85;
+
+    function drawClock() {
+        ctx.clearRect(0, 0, 170, 170);
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+        for (let i = 0; i < 12; i++) {
+            const ang = (i * 30 - 90) * Math.PI / 180;
+            ctx.beginPath();
+            ctx.moveTo(cx + Math.cos(ang) * (r - 7), cy + Math.sin(ang) * (r - 7));
+            ctx.lineTo(cx + Math.cos(ang) * (r - 2), cy + Math.sin(ang) * (r - 2));
+            ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5; ctx.stroke();
+        }
+        const now = new Date();
+        const h = now.getHours() % 12, m = now.getMinutes(), s = now.getSeconds();
+        drawHand(((h + m / 60) * 30 - 90) * Math.PI / 180, r * 0.5, 7, '#fbbf24');
+        drawHand(((m + s / 60) * 6 - 90) * Math.PI / 180, r * 0.7, 6, '#fbbf24');
+        drawHand((s * 6 - 90) * Math.PI / 180, r * 0.8, 3, '#fbbf24');
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbbf24'; ctx.fill();
+    }
+
+    function drawHand(angle, len, w, color) {
+        ctx.beginPath();
+        ctx.lineWidth = w; ctx.strokeStyle = color;
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(angle) * len, cy + Math.sin(angle) * len);
+        ctx.stroke();
+    }
+
+    setInterval(drawClock, 1000);
+    drawClock();
+})();
+
+(function() {
+    const weekNames = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    function update() {
+        const now = new Date();
+        document.getElementById('date-ymd').textContent = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+        document.getElementById('date-dow').textContent = weekNames[now.getDay()];
+        document.getElementById('date-hms').textContent = String(now.getHours()).padStart(2,'0') + '：' + String(now.getMinutes()).padStart(2,'0') + '：' + String(now.getSeconds()).padStart(2,'0');
+    }
+    setInterval(update, 1000);
+    update();
+})();
+</script>
 
 </body>
 </html>
