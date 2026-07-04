@@ -22,13 +22,11 @@
         .hero .container { max-width: none; }
 
         .hero-blocks {
-            display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center;
-            gap: 20px;
+            display: grid; grid-template-columns: 1fr 1fr auto 1fr 1fr; align-items: center;
+            justify-items: center; gap: 20px;
         }
 
-        .hero-left   { display: flex; flex-direction: row; align-items: center; justify-content: space-evenly; gap: 16px; }
         .hero-mid    { text-align: center; }
-        .hero-right  { display: flex; flex-direction: row; align-items: center; justify-content: space-evenly; gap: 16px; }
 
         .hero-mid > * + * { margin-top: 6px; }
 
@@ -162,7 +160,7 @@
         }
 
         @media (max-width: 992px) {
-            .hero-left, .hero-right { display: none; }
+            .hero-blocks { flex-wrap: wrap; justify-content: center; gap: 12px; }
             .hero h1 { font-size: 2rem; }
         }
     </style>
@@ -178,12 +176,9 @@
 
         <div class="hero-blocks">
 
-            <!-- 左块：时钟 + 二维码 -->
-            <div class="hero-left">
-                <canvas id="clock-canvas" width="170" height="170"></canvas>
-                <div class="qr-box">
-                    <img src="images/wechat-qr.png" alt="微信二维码">
-                </div>
+            <canvas id="clock-canvas" width="170" height="170"></canvas>
+            <div class="qr-box">
+                <img src="images/wechat-qr.png" alt="微信二维码">
             </div>
 
             <!-- 中块：标题组 -->
@@ -204,14 +199,11 @@
                 </p>
             </div>
 
-            <!-- 右块：日期组 + 社区理念 -->
-            <div class="hero-right">
-                <div class="community-tag"><span class="community-title">扫码加我微信｜公益软件共享站</span>&emsp;&emsp;如果你有好用的工具软件、私藏实用资源，欢迎主动分享；全程纯公益，不收取任何费用。资源库由全体伙伴一同共建，属于每一位参与者，一人用心分享，全体伙伴皆可免费获益。</div>
-                <div class="date-group">
-                    <div class="date-box"><div class="ymd" id="date-ymd"></div></div>
-                    <div class="date-box"><div class="dow" id="date-dow"></div></div>
-                    <div class="date-box"><div class="hms" id="date-hms"></div></div>
-                </div>
+            <div class="community-tag"><span class="community-title">扫码加我微信｜公益软件共享站</span>&emsp;&emsp;如果你有好用的工具软件、私藏实用资源，欢迎主动分享；全程纯公益，不收取任何费用。资源库由全体伙伴一同共建，属于每一位参与者，一人用心分享，全体伙伴皆可免费获益。</div>
+            <div class="date-group">
+                <div class="date-box"><div class="ymd" id="date-ymd"></div></div>
+                <div class="date-box"><div class="dow" id="date-dow"></div></div>
+                <div class="date-box"><div class="hms" id="date-hms"></div></div>
             </div>
 
         </div>
