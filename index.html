@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -11,27 +11,43 @@
             --bg: #f8fafc;
             --text: #1e293b;
         }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background: linear-gradient(180deg, #eef2ff 0%, #f0f4ff 30%, #faf5ff 100%); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 100vh; }
 
         .navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 4px 0; }
 
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff; padding: 20px 0; text-align: center;
+            color: #fff; padding: 10px 0 10px 0; text-align: center;
         }
         .hero .container { max-width: none; }
 
         .hero-blocks {
-            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center;
             gap: 20px;
         }
 
-        .hero-left   { display: flex; align-items: center; justify-content: center; }
+        .hero-left   { display: flex; flex-direction: row; align-items: center; justify-content: space-evenly; gap: 16px; }
         .hero-mid    { text-align: center; }
-        .hero-right  { text-align: center; white-space: nowrap; }
+        .hero-right  { display: flex; flex-direction: row; align-items: center; justify-content: space-evenly; gap: 16px; }
 
         .hero-mid > * + * { margin-top: 6px; }
-        .hero-right > * + * { margin-top: 6px; }
+
+        .date-group { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+        .qr-box {
+            background: rgba(255,255,255,0.12); border-radius: 12px; padding: 10px;
+            text-align: center;
+        }
+        .qr-box img { width: 170px; height: 170px; border-radius: 8px; display: block; }
+
+        .community-tag {
+            font-size: 0.92rem; color: #67e8f9; line-height: 1.8;
+            font-weight: 500; text-align: left; max-width: 260px;
+        }
+        .community-title {
+            display: block; font-size: 1.05rem; font-weight: 700; color: #fde047;
+            margin-bottom: 6px; text-align: center;
+        }
 
         .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
 
@@ -44,9 +60,12 @@
 
         .txt-row { white-space: nowrap; }
 
-        .software-section { padding: 60px 0; }
-        .software-section h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 40px; color: #1e293b; }
-        .software-card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); display: flex; gap: 24px; align-items: center; }
+        .software-section { padding: 4px 0 40px 0; }
+        .software-section h2 { text-align: center; font-size: 2rem; font-weight: 700; margin: 48px 0; background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 4s ease infinite; }
+        .software-card { background: linear-gradient(135deg, #f5f3ff 0%, #fdfbff 100%); border-radius: 16px; padding: 32px; box-shadow: 0 4px 24px rgba(99,102,241,0.08); display: flex; gap: 24px; align-items: center; width: 100%; max-width: 100%; box-sizing: border-box; border: 1px solid rgba(99,102,241,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; animation: cardIn 0.6s ease-out both; }
+        .software-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.35); }
+        @keyframes cardIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         .software-icon { width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .software-icon svg { width: 48px; height: 48px; }
         .software-info { flex: 1; }
@@ -57,6 +76,86 @@
         .btn-outline { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; flex-shrink: 0; white-space: nowrap; border: 2px solid #94a3b8; color: #64748b; background: transparent; transition: all 0.2s; }
         .btn-outline:hover { border-color: #6366f1; color: #6366f1; transform: translateY(-2px); }
         .btn-group { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; align-items: center; }
+
+        .search-bar-wrap {
+            margin: 2px 0 2px 0;
+            padding: 0 40px;
+            max-width: none;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+        }
+        .search-bar input {
+            width: 100%;
+            height: 54px;
+            padding: 0 52px 0 22px;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            font-size: 1.05rem;
+            color: #1e293b;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 4px 20px rgba(99,102,241,0.18), 0 1px 3px rgba(0,0,0,0.06);
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s, transform 0.15s;
+            box-sizing: border-box;
+        }
+        .search-bar input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 4px 24px rgba(99,102,241,0.32), 0 1px 4px rgba(99,102,241,0.15), 0 0 0 4px rgba(99,102,241,0.08);
+            background: #ffffff;
+        }
+        .search-bar input::placeholder {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .search-clear {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 6px 8px;
+            line-height: 1;
+            display: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            transition: color 0.15s, background 0.15s;
+        }
+        .search-clear:hover {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+        .search-no-result {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1rem;
+            padding: 40px 0;
+            display: none;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px 30px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 2;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            margin-top: 40px;
+        }
+        .site-footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        .site-footer a:hover { text-decoration: underline; }
 
         @media (max-width: 768px) {
             .software-card { flex-direction: column; text-align: center; }
@@ -79,9 +178,12 @@
 
         <div class="hero-blocks">
 
-            <!-- 左块：时钟 -->
+            <!-- 左块：时钟 + 二维码 -->
             <div class="hero-left">
                 <canvas id="clock-canvas" width="170" height="170"></canvas>
+                <div class="qr-box">
+                    <img src="images/wechat-qr.png" alt="微信二维码">
+                </div>
             </div>
 
             <!-- 中块：标题组 -->
@@ -102,11 +204,14 @@
                 </p>
             </div>
 
-            <!-- 右块：日期组 -->
+            <!-- 右块：日期组 + 社区理念 -->
             <div class="hero-right">
-                <div class="date-box"><div class="ymd" id="date-ymd"></div></div>
-                <div class="date-box"><div class="dow" id="date-dow"></div></div>
-                <div class="date-box"><div class="hms" id="date-hms"></div></div>
+                <div class="community-tag"><span class="community-title">扫码加我微信｜公益软件共享站</span>&emsp;&emsp;如果你有好用的工具软件、私藏实用资源，欢迎主动分享；全程纯公益，不收取任何费用。资源库由全体伙伴一同共建，属于每一位参与者，一人用心分享，全体伙伴皆可免费获益。</div>
+                <div class="date-group">
+                    <div class="date-box"><div class="ymd" id="date-ymd"></div></div>
+                    <div class="date-box"><div class="dow" id="date-dow"></div></div>
+                    <div class="date-box"><div class="hms" id="date-hms"></div></div>
+                </div>
             </div>
 
         </div>
@@ -114,15 +219,24 @@
     </div>
 </section>
 
+<div class="search-bar-wrap">
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="搜索软件名称、功能…" autocomplete="off">
+        <button class="search-clear" id="search-clear" title="清空">&times;</button>
+    </div>
+</div>
+
 <section class="software-section">
     <div class="container" style="max-width:none;padding:0 40px;">
-        <h2>软件分享</h2>
-        <div class="software-card">
+<div class="search-no-result" id="search-no-result">未找到匹配的软件，换个关键词试试？</div>
+
+        <h2>多媒体播放</h2>
+<div class="software-card">
             <div class="software-icon" style="background:#f97316;">
                 <img src="https://www.videolan.org/favicon.ico" alt="VLC" width="48" height="48" style="display:block;">
             </div>
             <div class="software-info">
-                <h3>VLC Media Player <span id="vlc-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;"></span></h3>
+                <h3>VLC Media Player</h3>
                 <p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。简洁无广告，无间谍软件，不跟踪用户行为。<br>视频格式：MPEG-1/2、DivX、MPEG-4 ASP、XviD、H.264/AVC、H.265/HEVC、WMV、VC-1、VP8/VP9、AV1、RealVideo 等。<br>音频格式：MP3、AAC、Vorbis、FLAC、ALAC、WMA、AC3、DTS、Opus、AMR 等。<br>字幕格式：MicroDVD、SubRIP、SubViewer、SSA/ASS、SAMI、VobSub、USF、DVD/Blu-ray 字幕等。</p>
             </div>
             <a href="https://www.videolan.org/" target="_blank" class="btn-download" style="background:#f97316;">
@@ -130,27 +244,13 @@
                 官方下载
             </a>
         </div>
-        <!-- 剪映 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:#000;">
-                <img src="https://lf3-s.vlabstatic.com/obj/vilab-static/ies/ulike/web/resource/fe_official/assets/imgs/lv/favicon.ico" alt="剪映" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>剪映 专业版 <span id="jianying-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v10.9.0</span></h3>
-                <p>字节跳动旗下全能免费视频剪辑工具，支持 Windows / macOS / Android / iOS 多端同步。<br>AI 功能：AI 文字成片、AI 音乐、AI 音效、智能抠像、美颜美体、数字人、视频翻译。<br>专业剪辑：关键帧动画、曲线变速、色度抠图、多机位（4/9机位）、50条时间线、4K 导出。<br>创意资源：海量模板、滤镜、特效、转场、贴纸、曲库持续更新，支持 NVIDIA RTX 50系 GPU 加速。</p>
-            </div>
-            <a href="https://www.capcut.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #000 0%, #333 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 汽水音乐 -->
+<!-- 汽水音乐 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #84cc16 0%, #eab308 100%);">
                 <img src="qishui_icon.png" alt="汽水音乐" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>汽水音乐 <span id="qishui-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;"></span></h3>
+                <h3>汽水音乐</h3>
                 <p>汽水音乐是抖音官方出品的音乐APP，支持手机、PC、Mac 多端使用。<br>AI 个性推荐：根据听歌偏好智能推荐，发现小众好音乐，拒绝千篇一律。<br>抖音同步：一键同步抖音收藏歌单，视频里的好音乐不再错过。<br>海量曲库：千万曲库覆盖流行、嘻哈、电音、摇滚、国风、民谣、独立、纯音乐等全品类。<br>场景模式：学习/运动/通勤/游戏，场景音乐模式帮你快速找到适合的歌。</p>
             </div>
             <a href="https://www.qishui.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #84cc16 0%, #eab308 100%);">
@@ -158,13 +258,230 @@
                 官方下载
             </a>
         </div>
-        <!-- 网易UU远程 -->
+<!-- 酷狗音乐 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2D8CF0 0%, #0052D9 100%);">
+                <img src="https://www.kugou.com/favicon.ico" alt="酷狗音乐" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%232D8CF0%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E9%85%B7%E7%8B%97%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>酷狗音乐</h3>
+                <p>国内老牌音乐平台，拥有海量正版曲库和蝰蛇音效，支持无损音质下载，K歌直播功能丰富，多端同步听歌。</p>
+            </div>
+            <a href="https://www.kugou.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2D8CF0 0%, #0052D9 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 酷我音乐 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                <img src="https://www.kuwo.cn/favicon.ico" alt="酷我音乐" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23FF6B35%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E9%85%B7%E6%88%91%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>酷我音乐</h3>
+                <p>酷我音乐盒，集海量曲库、无损音质、蝰蛇音效于一体，支持在线听歌、K歌直播、有声电台等多元化音乐服务。</p>
+            </div>
+            <a href="https://www.kuwo.cn" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 网易云音乐 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #EC4141 0%, #C62F2F 100%);">
+                <img src="https://music.163.com/favicon.ico" alt="网易云音乐" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23EC4141%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E7%BD%91%E6%98%93%E4%BA%91%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>网易云音乐</h3>
+                <p>以歌单和音乐社交为核心的在线音乐平台，拥有强大的音乐推荐算法和活跃的评论区文化，支持原创音乐人入驻。</p>
+            </div>
+            <a href="https://music.163.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #EC4141 0%, #C62F2F 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- QQ音乐 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #31C27C 0%, #1AAF5E 100%);">
+                <img src="https://y.qq.com/favicon.ico" alt="QQ音乐" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2331C27C%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EQQ%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>QQ音乐</h3>
+                <p>腾讯旗下在线音乐平台，拥有千万级正版曲库和独家版权，支持 DTS 音效和臻品全景声，与微信/QQ 深度打通。</p>
+            </div>
+            <a href="https://y.qq.com/download/index.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #31C27C 0%, #1AAF5E 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- KMPlayer -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #EF4444 0%, #DC2626 100%);">
+                <img src="https://www.kmplayer.com/favicon.ico" alt="KMPlayer" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23EF4444%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3EKM%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>KMPlayer</h3>
+                <p>老牌全能多媒体播放器，支持 3D/4K/UHD 播放，内置多种解码器，支持字幕同步和视频截取。</p>
+            </div>
+            <a href="https://www.kmplayer.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #EF4444 0%, #DC2626 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- Aiseesoft Blu-ray Player -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                <img src="https://www.aiseesoft.com/favicon.ico" alt="Aiseesoft Blu-ray Player" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230284C7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EBD%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Aiseesoft Blu-ray Player</h3>
+                <p>专业蓝光播放软件，支持播放蓝光光盘/文件夹/ISO 文件，同时兼容 4K 和普通视频格式，画质无损。</p>
+            </div>
+            <a href="https://www.aiseesoft.com/blu-ray-player/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Winamp -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                <img src="https://www.winamp.com/favicon.ico" alt="Winamp" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23F59E0B%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Winamp</h3>
+                <p>传奇级音乐播放器，1997 年问世，以简洁界面和强大插件生态风靡全球，支持 MP3/AAC/FLAC 等格式，2022 年焕新回归。</p>
+            </div>
+            <a href="https://www.winamp.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 腾讯视频 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #06B6D4 0%, #0284C7 100%);">
+                <img src="https://v.qq.com/favicon.ico" alt="腾讯视频" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2306B6D4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E8%85%BE%E8%AE%AF%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>腾讯视频</h3>
+                <p>腾讯旗下在线视频平台，海量正版影视剧、综艺、动漫、纪录片，支持 4K 画质和多端同步观看。</p>
+            </div>
+            <a href="https://v.qq.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #06B6D4 0%, #0284C7 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 爱奇艺 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #22C55E 0%, #16A34A 100%);">
+                <img src="https://www.iqiyi.com/favicon.ico" alt="爱奇艺" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2322C55E%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E7%88%B1%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>爱奇艺</h3>
+                <p>中国领先的在线视频平台，拥有丰富的独家剧集、电影、综艺、动漫内容，支持高清蓝光画质。</p>
+            </div>
+            <a href="https://www.iqiyi.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #22C55E 0%, #16A34A 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 优酷 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);">
+                <img src="https://www.youku.com/favicon.ico" alt="优酷" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230EA5E9%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E4%BC%98%E9%85%B7%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>优酷</h3>
+                <p>阿里巴巴旗下视频平台，涵盖热门剧集、电影、综艺、少儿等内容，支持 HDR 和帧享影音。</p>
+            </div>
+            <a href="https://www.youku.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 哔哩哔哩 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F472B6 0%, #EC4899 100%);">
+                <img src="https://www.bilibili.com/favicon.ico" alt="哔哩哔哩" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23F472B6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EB%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>哔哩哔哩</h3>
+                <p>国内最大的弹幕视频社区（B站），涵盖动画、游戏、知识、音乐等多元内容，以优质 UP 主创作和弹幕文化著称。</p>
+            </div>
+            <a href="https://www.bilibili.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F472B6 0%, #EC4899 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 芒果TV -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F97316 0%, #FBBF24 100%);">
+                <img src="https://www.mgtv.com/favicon.ico" alt="芒果TV" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23F97316%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E8%8A%92%E6%9E%9C%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>芒果TV</h3>
+                <p>湖南卫视旗下视频平台，拥有独家综艺 IP 和自制剧集，如《乘风破浪》《大侦探》等热门节目。</p>
+            </div>
+            <a href="https://www.mgtv.com/app/index.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F97316 0%, #FBBF24 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 咪咕视频 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);">
+                <img src="https://www.miguvideo.com/favicon.ico" alt="咪咕视频" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%238B5CF6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E5%92%AA%E5%92%95%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>咪咕视频</h3>
+                <p>中国移动旗下综合视频平台，拥有体育赛事直播版权（NBA/CBA/五大联赛），同时提供影视综艺内容。</p>
+            </div>
+            <a href="https://www.miguvideo.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- 搜狐视频 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                <img src="https://tv.sohu.com/favicon.ico" alt="搜狐视频" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23F59E0B%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E6%90%9C%E7%8B%90%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>搜狐视频</h3>
+                <p>搜狐旗下视频平台，提供美剧、自制剧、综艺等内容，经典美剧资源丰富。</p>
+            </div>
+            <a href="https://tv.sohu.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>视频编辑</h2>
+<!-- 剪映 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:#000;">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQBSURBVFhH1VZNSGNXFD5RZ0AhiLaTERRtSFF0dHDhwl2hugpECroRXIj/RFragj+o0EUXij8oFQoahDQZ3bWbLooGiqItkQnTmZpAEjPQ8DAvWkOYmPjyI55yH0m49ybjxJ8s+sFZ3Pu+853v3XfvuQ/gfwjFB+L+ODw8VAcCga/D4fALSZJ2JEnakyRpn0Q0Gj2IxWJ/kJAk6U8SqTF5Fo1GZV4yxxIOhzeDweA3NptNw9fJClEU9YlE4hQfGIlE4l+fz/fVjavk8Xi+vL6+5nMfFMfHx9/ydWWsr68/i8ViQT7hoRGPx98ZDIbnfH04Ojr6jifnC3a7/Xu+/iNBEH7lifmCIAi/AcBj2kCpKIpWnkj2g81mw52dnZzj4OAAJUlidMLhMDP2+/0vAaCMNvCxKIqvGBYiTk9PY2FhIQLAraKjo0PO93q9qNfrcWxsjNE9PT19AwBPaAMqMkmT4vE41tbWZojnEkVFRdjX14cqlUoe9/f309LEwN8A8JQ28JRM0qRYLIZ1dXWyWGdnJy4vL+PKygouLCzg/Pw8E0tLS7i6uooTExNYWVmZYWhmZoaWzt2AWq2WBcrKynBoaAjdbjdNSePq6goNBgM2NjZiQUFBunBzczNubm5m7ImcDBBRsnT0HiguLpbnHA6HzLm8vJQL19fXM29MVm5tbQ0jkQgtmUZOBlLY3d1FrVbLFFAqldjb24stLS3MfHV1NS4uLmIweHM/u5WBFIiRtrY2pmAqysvLcW5uDs/Pz/m0rLiTgb29PWxvb88onjIwOzuLZ2dnfFpW3MrA/v4+6nQ6VCgU6YKlpaU4ODiIra2tjJGqqip5JQKBAC/DIKsBv9+fsQmHh4flY5gqUFJSIp8Gp9Mpc6LRKBqNRmxqamKMaDQa+ViGQiFaMo1sBlR+v59pRPwxHBkZIVcpTUmDtGxihBw7+hg2NDTgxsYGXlxcMPysBkRRzDCQakRdXV1yE3pfIyI7n7zx1NQU1tTUMKtBYnJykpbOauCJz+d7TZPu24rJp6qoqJDHAwMDtPR7DfzFsBDlN7rLZUQ2LYEgCDg6Oorj4+OMLtlvvIGPBEF4ybAe8DrmO+LJyckrcgPTBpQul8vCsPIIj8fzO/kHoQ083t7e/oEn5gsWi+VH/o9I0d3drYvwa5UHRCIRqaen54tsv+cqs9m8xic8NLa2tjb4DZhCIQA8MxqNP4VCoUs+8b4IhUKSyWR6AQCNyVpZ8QgANFqtdsRkMv1stVpf2+32ty6X6x+32+29TTidTq/D4XhrtVrfmM3mX3Q6nR4APk3WuBHk2ygB4BMAaAGAzwDgcwBou0OQXKKhTmpmfPcPgSQUJJeMRFGOkeKT3BuL/gdO54w/oUYHsgAAAABJRU5ErkJggg==" alt="剪映" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>剪映 专业版</h3>
+                <p>字节跳动旗下全能免费视频剪辑工具，支持 Windows / macOS / Android / iOS 多端同步。<br>AI 功能：AI 文字成片、AI 音乐、AI 音效、智能抠像、美颜美体、数字人、视频翻译。<br>专业剪辑：关键帧动画、曲线变速、色度抠图、多机位（4/9机位）、50条时间线、4K 导出。<br>创意资源：海量模板、滤镜、特效、转场、贴纸、曲库持续更新，支持 NVIDIA RTX 50系 GPU 加速。</p>
+            </div>
+            <a href="https://www.capcut.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #000 0%, #333 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>远程控制</h2>
+<!-- 网易UU远程 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
                 <img src="https://uuyc.163.com/res/cms/res/uuyc.Ckljus0a.png" alt="网易UU远程" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>网易UU远程 <span id="uuyc-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;"></span></h3>
+                <h3>网易UU远程</h3>
                 <p>网易出品免费远程控制软件，真4K、真免费、真好用。<br>远程游戏：4K 144帧超低延迟串流，300+按键方案，手柄即插即用，手机也能畅玩3A大作。<br>远程办公：毫秒级响应，多屏远控，真彩模式，文件传输不限数量/格式/大小。<br>远程协助：ID+验证码快速连接，防窥模式保护隐私，支持一键远程开机(WOL)。<br>全平台覆盖：Windows / macOS / iOS / Android / TV 多端互控。</p>
             </div>
             <a href="https://uuyc.163.com/download/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0f172a 0%, #1e40af 100%);">
@@ -172,13 +489,13 @@
                 官方下载
             </a>
         </div>
-        <!-- ToDesk -->
+<!-- ToDesk -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);">
                 <img src="https://www.todesk.com/favicon.ico" alt="ToDesk" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>ToDesk <span id="todesk-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.9.7.1</span></h3>
+                <h3>ToDesk</h3>
                 <p>全球2.3亿用户信赖的远程桌面软件，每月50亿+分钟安全连接。<br>ZeroSync引擎：十年实战验证，端到端延迟&lt;3ms，智能带宽调控，30%丢包无感。<br>专业远控：最高8K/360帧，支持数位板/多屏/游戏手柄，适配设计、影音、游戏全场景。<br>安全保障：端到端加密+TLS1.3，23项安全措施，安全日志+云端加密录屏。<br>全平台：Windows / macOS / Linux / iOS / Android / 微信小程序。</p>
             </div>
             <a href="https://www.todesk.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);">
@@ -186,13 +503,13 @@
                 官方下载
             </a>
         </div>
-        <!-- Radmin VPN -->
+<!-- Radmin VPN -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);">
                 <img src="https://radminvpnofficial.com/assets/images/favicon.svg" alt="Radmin VPN" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Radmin VPN <span id="radmin-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.4</span></h3>
+                <h3>Radmin VPN</h3>
                 <p>全球5000万+用户信赖的永久免费VPN，自1999年持续运营。<br>虚拟局域网：一键创建/加入虚拟网络，让异地电脑像局域网一样互联，支持无限设备。<br>极致安全：256位AES端到端加密，严格无日志政策，零数据泄露25年+安全记录。<br>热门场景：局域网联机游戏、远程办公、NAS文件共享、远程控制搭配Radmin Remote。<br>全免费：无广告、无流量限制、无功能锁定，支持 Windows 7-11。</p>
             </div>
             <a href="https://radminvpnofficial.com/zh/windows" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);">
@@ -200,13 +517,15 @@
                 官方下载
             </a>
         </div>
-        <!-- 玛维斯 Marvis -->
+
+        <h2>AI 助手</h2>
+<!-- 玛维斯 Marvis -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #0052d9 0%, #3b82f6 100%);">
                 <img src="https://marvis.qq.com/favicon.ico" alt="玛维斯" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>玛维斯 Marvis <span id="marvis-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.0.4</span></h3>
+                <h3>玛维斯 Marvis</h3>
                 <p>腾讯官方操作系统层级 AI 助手，2026年5月正式上线。支持 Windows / macOS / Android 三端，预置多 Agent 协作，系统级理解，本地隐私保护。<br>跨端操控：手机与电脑无缝协同，远程操控手机应用。<br>文件管理：智能分类整理，语义搜索本地文件。<br>系统配置：语音/文字调控系统设置，AI 问答与代码辅助。</p>
             </div>
             <a href="https://marvis.qq.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0052d9 0%, #3b82f6 100%);">
@@ -214,13 +533,13 @@
                 官方下载
             </a>
         </div>
-        <!-- 豆包 -->
+<!-- 豆包 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #00d26a 0%, #34d399 100%);">
                 <img src="https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/favicon.png" alt="豆包" referrerpolicy="no-referrer" crossorigin="anonymous" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>豆包 <span id="doubao-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.15.9</span></h3>
+                <h3>豆包</h3>
                 <p>字节跳动旗下 AI 智能助手，支持 Windows / macOS 桌面端。<br>AI 搜索：联网深度搜索，实时获取最新信息。<br>文档处理：PDF 问答、长文本总结、帮我写作。<br>多模态能力：图像生成与理解、智能翻译（60+ 语言）、语音通话。<br>跨端同步：手机端与电脑端数据实时同步，全面提升工作学习效率。</p>
             </div>
             <a href="https://www.doubao.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #00d26a 0%, #34d399 100%);">
@@ -228,27 +547,354 @@
                 官方下载
             </a>
         </div>
-        <!-- 百分浏览器 -->
+<!-- 千问 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #7C3AED 0%, #F97316 100%);">
+                <img src="https://tongyi.aliyun.com/favicon.ico" alt="千问" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%237C3AED%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3E%E5%8D%83%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>千问</h3>
+                <p>阿里通义千问大模型官方 AI 助手，体验最新 Qwen 大模型第一入口。<br>支持深度思考、AI 搜索、文档精读、PPT 创作、录音纪要、AI 生图、代码辅助，划词唤起小窗随时问答，深色模式护眼，多端实时同步。</p>
+            </div>
+            <a href="https://tongyi.aliyun.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #7C3AED 0%, #F97316 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 元宝 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <img src="https://yuanbao.qq.com/favicon.ico" alt="元宝" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23a855f7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 元 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>元宝</h3>
+                <p>腾讯 AI 全能助手，深度思考、联网搜索、AI 写作编程识图，混元大模型驱动。<br>AI 搜索：搜得更准答得更全，联网搜索公众号、视频号等腾讯生态信源。<br>AI 文档精读：支持 36 种文件格式，全局划词翻译搜索，迷你对话窗快捷启动。</p>
+            </div>
+            <a href="https://yuanbao.tencent.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Kimi -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #6C5CE7 0%, #a29bfe 100%);">
+                <img src="https://kimi.moonshot.cn/favicon.ico" alt="Kimi" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%236C5CE7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EK%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Kimi</h3>
+                <p>月之暗面出品 AI 智能助手，Kimi K2.5 多模态大模型驱动。<br>支持 200 万字超长上下文、深度推理、AI 搜索、文档精读、PPT 生成、代码辅助。<br>多端覆盖 Windows / macOS / 浏览器插件 / App，满足从日常问答到专业创作的各类需求。</p>
+            </div>
+            <a href="https://kimi.moonshot.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6C5CE7 0%, #a29bfe 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 文心一言 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #4E6EF2 0%, #7B93F6 100%);">
+                <img src="https://yiyan.baidu.com/favicon.ico" alt="文心一言" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%234E6EF2%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 文 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>文心一言</h3>
+                <p>百度出品 AI 对话助手，文心大模型驱动。<br>覆盖对话互动、AI 绘画、文档处理、代码辅助、联网搜索等场景，支持网页版与移动端，向全社会免费开放。</p>
+            </div>
+            <a href="https://yiyan.baidu.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #4E6EF2 0%, #7B93F6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- QClaw -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                <img src="https://qclaw.qq.com/favicon.ico" alt="QClaw" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23FF6B35%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E QC %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>QClaw</h3>
+                <p>腾讯出品本地 AI 助手，基于 OpenClaw 框架构建。<br>微信直连远程操控电脑，支持企业微信/QQ/飞书/钉钉五大 IM 通道，内置多款顶尖大模型并支持自定义，Skills 生态丰富，开箱即用。</p>
+            </div>
+            <a href="https://qclaw.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- DeepSeek -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);">
+                <img src="https://deepseek.com/favicon.ico" alt="DeepSeek" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231a73e8%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EDS%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>DeepSeek</h3>
+                <p>深度求索出品 AI 模型，DeepSeek-V4 系列驱动。<br>支持 1M 超长上下文、思考/非思考双模式、代码生成、深度推理，网页端与 App 免费使用，API 开放。</p>
+            </div>
+            <a href="https://chat.deepseek.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 讯飞星火 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
+                <img src="https://xinghuo.xfyun.cn/favicon.ico" alt="讯飞星火" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 星 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>讯飞星火</h3>
+                <p>科大讯飞出品认知大模型，MoE 架构。<br>深度推理、多模态生成、代码创作、AI 搜索、PPT 生成，覆盖 12 万+ 公开助手，支持 Windows/Mac/移动端/浏览器插件。</p>
+            </div>
+            <a href="https://xinghuo.xfyun.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 智谱清言 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1677ff 0%, #4096ff 100%);">
+                <img src="https://chatglm.cn/favicon.ico" alt="智谱清言" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231677ff%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 智 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>智谱清言</h3>
+                <p>智谱出品生成式 AI 助手，GLM-5 大模型驱动。<br>支持通用问答、AI 画图、AI 阅读、清影 AI 生视频、数据分析、智能体中心，覆盖网页版/桌面版/移动端/微信小程序。</p>
+            </div>
+            <a href="https://chatglm.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1677ff 0%, #4096ff 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 可灵 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #00BFA5 0%, #1DE9B6 100%);">
+                <img src="https://klingai.kuaishou.com/favicon.ico" alt="可灵" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2300BFA5%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 灵 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>可灵</h3>
+                <p>快手出品 AI 创意生产力平台，可灵大模型 + 可图大模型双引擎。<br>AI 视频生成、AI 图片生成、多图参考、可控编辑，支持文生视频/图生视频，Web 端与移动端均可使用。</p>
+            </div>
+            <a href="https://klingai.kuaishou.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #00BFA5 0%, #1DE9B6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- DeepL -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0F2B46 0%, #1A4B7F 100%);">
+                <img src="https://www.deepl.com/favicon.ico" alt="DeepL" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230F2B46%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EDL%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>DeepL</h3>
+                <p>全球领先 AI 翻译工具，基于专有 LLM 提供高精准度翻译。<br>支持 100+ 语言互译、文档翻译、语音翻译、写作辅助，覆盖 Windows/Mac/iOS/Android/浏览器扩展，免费使用。</p>
+            </div>
+            <a href="https://www.deepl.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0F2B46 0%, #1A4B7F 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- WorkBuddy -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0052d9 0%, #448aff 100%);">
+                <img src="https://www.codebuddy.cn/favicon.ico" alt="WorkBuddy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230052d9%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EWB%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>WorkBuddy</h3>
+                <p>腾讯出品 AI 智能体桌面工作台，AI Agent 办公新范式。<br>自然语言操控、Office/PDF/图片多格式文件处理、多模型支持（混元/DeepSeek/GLM/Kimi），支持企业微信/QQ/飞书/钉钉远程操控，Skills 生态丰富，开箱即用。</p>
+            </div>
+            <a href="https://www.codebuddy.cn/work/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0052d9 0%, #448aff 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- CoPaw -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF6A00 0%, #FF8C42 100%);">
+                <img src="https://copaw.agentscope.io/favicon.ico" alt="CoPaw" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23FF6A00%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ECP%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>CoPaw</h3>
+                <p>阿里云 AgentScope 团队出品开源个人 AI 助手工作台。<br>支持本地与云端双模部署、多频道接入（钉钉/飞书/QQ/Discord/iMessage）、本地 LLM 运行、MCP 集成，完全数据掌控，一行命令即可安装。</p>
+            </div>
+            <a href="https://copaw.agentscope.io/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF6A00 0%, #FF8C42 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- AiPy -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #10b981 0%, #34d399 100%);">
+                <img src="https://www.aipyaipy.com/favicon.ico" alt="AiPy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2310b981%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EAP%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>AiPy</h3>
+                <p>知道创宇出品 AI 数字员工，Python-Use 范式驱动。<br>大模型 + Python 执行环境，自动操控电脑/手机/服务器，支持超 10GB 大文件分析、批量数据处理、自动化办公，开源免费（MIT 协议）。</p>
+            </div>
+            <a href="https://www.aipyaipy.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #10b981 0%, #34d399 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- OpenClaw -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #e53935 0%, #ef5350 100%);">
+                <img src="https://openclaw.ai/favicon.ico" alt="OpenClaw" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23e53935%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EOC%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>OpenClaw</h3>
+                <p>开源个人 AI 助理框架，一行命令安装。<br>通过 WhatsApp/Telegram 等任意聊天应用操控，自动处理邮件/日历/订票等日常事务，支持 macOS/Linux/Windows，生态活跃，社区驱动。</p>
+            </div>
+            <a href="https://openclaw.ai/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #e53935 0%, #ef5350 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Hermes Agent -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #374151 0%, #6b7280 100%);">
+                <img src="https://hermes-agent.nousresearch.com/favicon.ico" alt="Hermes Agent" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23374151%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EHM%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Hermes Agent</h3>
+                <p>Nous Research 出品自进化 AI 智能体，内置闭环学习循环。<br>自主创建和优化 Skills、跨会话持久记忆、用户画像建模，支持 300+ 模型、20+ 消息平台（Telegram/Discord/Slack/WhatsApp）、6 种终端后端，MIT 开源。</p>
+            </div>
+            <a href="https://hermes-agent.nousresearch.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #374151 0%, #6b7280 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>浏览器</h2>
+<!-- 谷歌浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #EA4335 0%, #FBBC04 50%, #34A853 100%);">
+                <img src="https://www.google.com/chrome/static/images/favicons/favicon-32x32.png" alt="谷歌浏览器" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>谷歌浏览器 Google Chrome</h3>
+                <p>全球市场份额第一的浏览器，由 Google 开发。<br>V8 引擎：JavaScript 执行速度业界领先。<br>海量扩展：Chrome 网上应用店丰富的插件生态。<br>跨平台同步：书签、密码、历史记录多设备无缝同步。<br>安全防护：沙箱隔离、Safe Browsing 实时防护钓鱼与恶意网站。</p>
+            </div>
+            <a href="https://www.google.cn/chrome/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #EA4335 0%, #FBBC04 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 百分浏览器 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);">
                 <img src="https://www.centbrowser.cn/favicon.ico" alt="百分浏览器" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>百分浏览器 Cent Browser <span id="centbrowser-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v5.1.1130.82</span></h3>
+                <h3>百分浏览器 Cent Browser</h3>
                 <p>基于 Chromium 内核的增强型浏览器，由百分工作室开发。<br>鼠标手势：自定义轨迹手势，提升浏览效率。<br>超级拖拽：拖拽文字搜索、拖拽链接后台打开。<br>实用功能：内存自动优化、小号标签页、滚动标签栏、内置截图、老板键。<br>特色优势：国内网银兼容性良好，持续同步更新 Chromium 内核。</p>
             </div>
-            <a href="https://www.centbrowser.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);">
+            <a href="https://www.centbrowser.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- Steam -->
+<!-- 123浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #06B6D4 0%, #F97316 100%);">
+                <img src="https://123llq.com/favicon.ico" alt="123浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%2306B6D4%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E12%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>123浏览器</h3>
+                <p>国产高效Windows桌面浏览器，内置视频录制与在线视频嗅探下载功能，支持m3u8、yt-dlp多平台资源获取。内置Google翻译接口、阅读模式、油猴脚本支持，兼容Edge扩展市场，支持绿色便携版一键迁移。</p>
+            </div>
+            <a href="https://123llq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #06B6D4 0%, #F97316 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- QQ浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1677FF 0%, #722ED1 100%);">
+                <img src="https://browser.qq.com/favicon.ico" alt="QQ浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%231677FF%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3EQQ%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>QQ浏览器</h3>
+                <p>腾讯出品AI浏览器，4亿用户之选。搭载混元及DeepSeek大模型，元宝助手随时唤起，AI一键总结、思维导图生成、PPT制作。支持70+格式文件即开即览，实时字幕翻译16种语言，竖版工作台多标签管理，多端书签同步。</p>
+            </div>
+            <a href="https://browser.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1677FF 0%, #722ED1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 世界之窗浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);">
+                <img src="https://theworld.cn/favicon.ico" alt="世界之窗浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%230EA5E9%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E4%B8%96%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>世界之窗浏览器</h3>
+                <p>经典国产极简双核浏览器，采用Chromium 28稳定版内核与IE双核智能切换。体积仅约20MB，启动快、网页打开快、资源占用极小，在中低配电脑上优势尤为明显。界面清爽无广告，支持鼠标手势，绿色纯净无捆绑。</p>
+            </div>
+            <a href="http://www.theworld.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 搜狗浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF6300 0%, #FCD34D 100%);">
+                <img src="https://sogou.browser.qq.com/favicon.ico" alt="搜狗浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23FF6300%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E6%90%9C%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>搜狗浏览器</h3>
+                <p>搜狗出品Chromium双核浏览器，智能内核切换，网页加载提速40%。支持Flash加速、P2SP高速下载、标签分组与竖版工作台，内置广告过滤引擎屏蔽99%弹窗横幅。视频小窗透明度可调，网速保护下载不抢速，海量皮肤随心换。</p>
+            </div>
+            <a href="https://sogou.browser.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF6300 0%, #FCD34D 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 火狐浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF7139 0%, #B833FF 100%);">
+                <img src="https://mozilla.org/favicon.ico" alt="火狐浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23FF7139%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3EFF%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>火狐浏览器</h3>
+                <p>Mozilla基金会旗下开源浏览器，以隐私保护为核心，默认拦截跟踪器与第三方Cookie。支持标签分组、阅读模式、画中画视频，可高度自定义工具栏与主题外观。完全独立非营利组织运营，不售卖用户数据，跨平台开源透明。</p>
+            </div>
+            <a href="https://www.mozilla.org/zh-CN/firefox/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF7139 0%, #B833FF 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 夸克浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1677FF 0%, #10B981 100%);">
+                <img src="https://quark.cn/favicon.ico" alt="夸克浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%231677FF%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E5%A4%B8%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>夸克浏览器</h3>
+                <p>阿里旗下极简AI浏览器，延续移动端简洁设计理念。集成AI搜索与深度思考引擎，内置夸克网盘无缝衔接云存储。PC版支持Win7及以上系统，安装包仅3MB，界面清爽无干扰，书签资产多端同步，学习办公高效拍档。</p>
+            </div>
+            <a href="https://www.quark.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1677FF 0%, #10B981 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- AVANT浏览器 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #22C55E 0%, #3B82F6 100%);">
+                <img src="https://avantbrowser.com/favicon.ico" alt="AVANT浏览器" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%2322C55E%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3EAV%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>AVANT浏览器</h3>
+                <p>老牌三核浏览器（Trident/Gecko/Webkit），可按网站切换渲染引擎。支持多进程防假死、分屏浏览、视频嗅探下载、内置多线程下载加速器。内存占用极低，关闭标签彻底释放内存，支持在线书签加密同步与无痕隐私模式，100%免费无广告。</p>
+            </div>
+            <a href="https://www.avantbrowser.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #22C55E 0%, #3B82F6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>游戏平台</h2>
+<!-- Steam -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #171a21 0%, #2a3f5a 100%);">
                 <img src="https://store.steampowered.com/favicon.ico" alt="Steam" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Steam <span id="steam-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.10.91.91</span></h3>
+                <h3>Steam</h3>
                 <p>Valve 旗下全球最大数字游戏平台，支持 Windows / macOS / Linux。<br>海量游戏库：超 5 万款游戏，2025 年同时在线峰值约 4200 万。<br>一站式体验：购买、下载、社交、创意工坊于一体。<br>特色功能：云存档、家庭共享、远程同乐、Steam Input 手柄适配。<br>社区生态：评测系统、指南、截图分享、直播功能完善。</p>
             </div>
             <a href="https://store.steampowered.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #171a21 0%, #2a3f5a 100%);">
@@ -256,13 +902,13 @@
                 官方下载
             </a>
         </div>
-        <!-- Epic Games 启动器 -->
+<!-- Epic Games 启动器 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #2f2d2e 0%, #4a4a4a 100%);">
                 <img src="https://static-assets-prod.epicgames.com/epic-store/static/favicon.ico" alt="Epic Games" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Epic Games 启动器 <span id="epic-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v19.2.2</span></h3>
+                <h3>Epic Games 启动器</h3>
                 <p>Epic Games 官方游戏平台与启动器，支持 Windows / macOS。<br>每周喜加一：每周赠送免费游戏，永久入库。<br>虚幻引擎生态：全球领先的实时 3D 创作工具。<br>独占大作：如《黑神话：悟空》等高品质作品。<br>免费游戏：《Fortnite》《糖豆人》《Rocket League》持续运营。集商店、库、社交于一体。</p>
             </div>
             <a href="https://store.epicgames.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2f2d2e 0%, #4a4a4a 100%);">
@@ -270,195 +916,13 @@
                 官方下载
             </a>
         </div>
-        <!-- OpenSpeedy -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
-                <img src="https://github.com/game1024/OpenSpeedy/raw/main/src/OpenSpeedy/Resources/OpenSpeedy.ico" alt="OpenSpeedy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%238b5cf6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2226%22 font-weight=%22bold%22%3E⚡%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>OpenSpeedy <span id="openspeedy-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.7.9</span></h3>
-                <p>开源免费游戏变速工具，突破帧率限制，支持 x86/x64 进程加速。<br>Ring3 层 Hook 无内核侵入，支持多种游戏引擎。<br>低系统资源占用，简单三步即可使用：启动 OpenSpeedy → 选择进程 → 调整倍率。</p>
-            </div>
-            <a href="https://github.com/game1024/OpenSpeedy/releases" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- Geek Uninstaller -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
-                <img src="https://geekuninstaller.com/favicon.ico" alt="Geek Uninstaller" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%2210%22 width=%2232%22 height=%2230%22 rx=%224%22 fill=%22%230891b2%22/%3E%3Cline x1=%2216%22 y1=%2218%22 x2=%2232%22 y2=%2218%22 stroke=%22white%22 stroke-width=%223%22/%3E%3Cline x1=%2216%22 y1=%2225%22 x2=%2232%22 y2=%2225%22 stroke=%22white%22 stroke-width=%223%22/%3E%3Cline x1=%2216%22 y1=%2232%22 x2=%2224%22 y2=%2232%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Geek Uninstaller <span id="geek-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.5.3</span></h3>
-                <p>轻量级卸载利器，单文件绿色便携，深度扫描清理残留文件及注册表。<br>支持强制卸载顽固/损坏程序，原生 x64 运行。<br>可卸载 Microsoft Store 应用，40+ 语言界面，启动迅速。</p>
-            </div>
-            <a href="https://geekuninstaller.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 微信 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
-                <img src="https://res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico" alt="微信" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2307c160%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22%3E微信%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>微信 <span id="weixin-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.1.11</span></h3>
-                <p>全能即时通讯，支持聊天、语音视频、文件传输、朋友圈及小程序。<br>Windows / macOS 双端统一体验，支持群接龙。<br>扫码登录安全便捷，消息多端实时同步。</p>
-            </div>
-            <a href="https://weixin.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- QQ -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
-                <img src="https://im.qq.com/favicon.ico" alt="QQ" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3EQQ%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>QQ <span id="qq-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v9.9.31</span></h3>
-                <p>经典即时通讯工具，全新 NT 架构，界面简约，支持语音输入与长截图。<br>支持多人语音视频通话、文件传输、QQ空间。<br>全新 UI 设计，消息页面三栏式高效浏览。</p>
-            </div>
-            <a href="https://im.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- WPS Office -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
-                <img src="https://platform.wps.cn/favicon.ico" alt="WPS Office" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%228%22 width=%2236%22 height=%2234%22 rx=%224%22 fill=%22%23f97316%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EWPS%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>WPS Office <span id="wps-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v12.1.0</span></h3>
-                <p>一站式 AI 智能办公套件，文字/表格/演示/PDF 全覆盖，多端云同步。<br>AI 助手辅助文档创作、PPT 高效制作、PDF 阅读和编辑。<br>兼容 Microsoft Office 格式，海量稻壳模板免费使用。</p>
-            </div>
-            <a href="https://platform.wps.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- Watt Toolkit -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);">
-                <img src="https://steampp.net/favicon.ico" alt="Watt Toolkit" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231e3a5f%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Watt Toolkit <span id="watt-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v3.0.0</span></h3>
-                <p>原名 Steam++，开源跨平台 Steam 工具箱，支持网络加速、令牌管理、库存管理。<br>本地反代加速访问 Steam 社区，账号快速切换、Steam 令牌安全保管。<br>库存编辑与管理，成就解锁/反解锁，插件商店扩展功能。</p>
-            </div>
-            <a href="https://steampp.net/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- C-Lodop -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                <img src="https://www.lodop.net/favicon.ico" alt="C-Lodop" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%2210%22 width=%2236%22 height=%2228%22 rx=%223%22 fill=%22%236366f1%22/%3E%3Crect x=%2212%22 y=%2214%22 width=%2224%22 height=%2216%22 rx=%222%22 fill=%22white%22/%3E%3Cline x1=%2224%22 y1=%2234%22 x2=%2224%22 y2=%2242%22 stroke=%22%236366f1%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>C-Lodop <span id="clodop-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.642</span></h3>
-                <p>云打印服务，纯 JS 调用跨浏览器，支持远程集中打印及手机平板打印。<br>WebSocket 通讯速度快，承载超级巨量连续打印业务。<br>安装文件仅 2M 多，部署简单，可免登录作为 Windows 服务运行。</p>
-            </div>
-            <a href="https://www.lodop.net/download.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 火绒安全软件 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                <img src="https://www.huorong.cn/favicon.ico" alt="火绒安全软件" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Cpath d=%22M24 4L8 14v10c0 10.4 6.8 20.1 16 22 9.2-1.9 16-11.6 16-22V14L24 4z%22 fill=%22%23ef4444%22/%3E%3Cpath d=%22M20 24l3 3 6-6%22 fill=%22none%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>火绒安全软件 <span id="huorong-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.0.10</span></h3>
-                <p>轻量无打扰安全防护，集病毒查杀、弹窗拦截、流量监控于一体。<br>基于强大底层技术，反病毒/主动防御/防火墙三大模块深度整合。<br>智能行为分析，不依赖庞大病毒库，系统占用极低。</p>
-            </div>
-            <a href="https://www.huorong.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- Everything -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-                <img src="https://www.voidtools.com/favicon.ico" alt="Everything" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23f59e0b%22/%3E%3Ctext x=%2224%22 y=%2228%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22%3E🔍%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Everything <span id="everything-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.4.1</span></h3>
-                <p>毫秒级文件搜索工具，仅索引文件名，极速定位磁盘任意文件。<br>1 秒索引 12 万文件，内存占用仅 14MB，安装包不到 2MB。<br>支持正则表达式、布尔运算符、实时更新，从 Windows 7 到 11 流畅运行。</p>
-            </div>
-            <a href="https://www.voidtools.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- Advanced IP Scanner -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
-                <img src="https://www.advanced-ip-scanner.com/favicon.ico" alt="Advanced IP Scanner" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2229%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EIP%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Advanced IP Scanner <span id="aipscanner-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.5</span></h3>
-                <p>免费网络扫描工具，数秒内扫描局域网设备，支持远程控制及共享访问。<br>多线程扫描技术，每秒可扫描数百台计算机。<br>集成 RDP 和 Radmin 远程控制，支持远程开机/关机、MAC 地址检测。</p>
-            </div>
-            <a href="https://www.advanced-ip-scanner.com/cn/download/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- Notepad++ -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
-                <img src="https://notepad-plus-plus.org/favicon.ico" alt="Notepad++" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%224%22 width=%2236%22 height=%2238%22 rx=%224%22 fill=%22%2384cc16%22/%3E%3Ctext x=%2224%22 y=%2230%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3EN%2B%2B%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Notepad++ <span id="notepadpp-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v8.9.6</span></h3>
-                <p>免费开源轻量代码编辑器，支持80+语言语法高亮，插件生态丰富。<br>多标签编辑、代码折叠、宏录制、正则搜索替换。<br>中文界面友好，全程无捆绑，启动迅速，Windows 平台首选文本编辑器。</p>
-            </div>
-            <a href="https://notepad-plus-plus.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- XnView MP -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
-                <img src="https://www.xnview.com/favicon.ico" alt="XnView MP" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%224%22 fill=%22%23e11d48%22/%3E%3Ccircle cx=%2218%22 cy=%2220%22 r=%226%22 fill=%22white%22/%3E%3Cpath d=%22M30 34 L44 34%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>XnView MP <span id="xnview-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.11.2</span></h3>
-                <p>全能免费图片浏览器，支持500+格式，批量转换及元数据编辑。<br>支持 JPEG-XL、AVIF、HEIC、WebP、PSD、PDF、RAW 等主流格式。<br>内置批量重命名、重复图片查找、幻灯片、屏幕截图等功能。</p>
-            </div>
-            <a href="https://www.xnview.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 微软电脑管家 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #0078d4 0%, #106ebe 100%);">
-                <img src="https://pcmanager.microsoft.com/favicon.ico" alt="微软电脑管家" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%224%22 y=%224%22 width=%2240%22 height=%2240%22 rx=%228%22 fill=%22%230078d4%22/%3E%3Ctext x=%2224%22 y=%2231%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E 微软 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>微软电脑管家 <span id="pcmanager-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v3.20</span></h3>
-                <p>微软官方出品，一键加速、深度清理、弹窗管理，纯净无打扰。<br>系统空间管理：深度清理存储空间，管理大文件，开启磁盘感知。<br>全面体检：快速检测电脑异常，垃圾清理、病毒检测一键解决。</p>
-            </div>
-            <a href="https://pcmanager.microsoft.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0078d4 0%, #106ebe 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- WeGame -->
+<!-- WeGame -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
                 <img src="https://wegame.com.cn/favicon.ico" alt="WeGame" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23f97316%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>WeGame <span id="wegame-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.2.1</span></h3>
+                <h3>WeGame</h3>
                 <p>腾讯一站式 PC 游戏平台，海量正版游戏极速下载，社区开黑。<br>集游戏购买、下载、启动、直播、社区交流于一体。<br>支持家长监控功能，全新 3.0 版本，高校认证、校友开黑。</p>
             </div>
             <a href="https://www.wegame.com.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
@@ -466,56 +930,73 @@
                 官方下载
             </a>
         </div>
-        <!-- Cheat Engine -->
+
+        <h2>加速器</h2>
+<!-- OpenSpeedy -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
-                <img src="https://www.cheatengine.org/favicon.ico" alt="Cheat Engine" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%228%22 width=%2232%22 height=%2232%22 rx=%224%22 fill=%22%234f46e5%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ECE%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                <img src="https://github.com/game1024/OpenSpeedy/raw/main/src/OpenSpeedy/Resources/OpenSpeedy.ico" alt="OpenSpeedy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%238b5cf6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2226%22 font-weight=%22bold%22%3E⚡%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Cheat Engine <span id="cheatengine-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v7.7</span></h3>
-                <p>开源内存修改工具，支持内存扫描、十六进制编辑、Lua 脚本扩展。<br>精准定位游戏进程内存地址，实时修改数值变量。<br>内置调试器、反汇编器、代码注入功能，仅供单机学习研究使用。</p>
+                <h3>OpenSpeedy</h3>
+                <p>开源免费游戏变速工具，突破帧率限制，支持 x86/x64 进程加速。<br>Ring3 层 Hook 无内核侵入，支持多种游戏引擎。<br>低系统资源占用，简单三步即可使用：启动 OpenSpeedy → 选择进程 → 调整倍率。</p>
             </div>
-            <a href="https://www.cheatengine.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
+            <a href="https://github.com/game1024/OpenSpeedy/releases" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- 豹图CAD -->
+<!-- Watt Toolkit -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
-                <img src="http://bootgraph.com/favicon.ico" alt="豹图" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2306b6d4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 豹 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);">
+                <img src="https://steampp.net/favicon.ico" alt="Watt Toolkit" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231e3a5f%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>豹图 <span id="bootgraph-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v9.3</span></h3>
-                <p>免费 CAD 快速看图算量，支持 DWG 格式、测量标注、分类汇总导出 Excel。<br>无需安装 CAD 即可秒开图纸，支持长度/角度/半径/面积智能测量。<br>独创 CAD 内置算量表格与 Excel 无缝交互，自由编辑、双向反查。</p>
+                <h3>Watt Toolkit</h3>
+                <p>原名 Steam++，开源跨平台 Steam 工具箱，支持网络加速、令牌管理、库存管理。<br>本地反代加速访问 Steam 社区，账号快速切换、Steam 令牌安全保管。<br>库存编辑与管理，成就解锁/反解锁，插件商店扩展功能。</p>
             </div>
-            <a href="http://bootgraph.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 驱动总裁 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
-                <img src="https://www.sysceo.com/favicon.ico" alt="驱动总裁" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%2210%22 width=%2236%22 height=%2228%22 rx=%224%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E 驱动 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>驱动总裁 <span id="drvceo-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.20</span></h3>
-                <p>全能驱动管理工具，在线离线双模式，笔记本台式机苹果 BootCamp 全兼容。<br>集在线和离线双模式，桌面和 PE 环境下均可安装硬件驱动。<br>庞大丰富的驱动库，界面友好，轻松解决硬件驱动各种问题。</p>
-            </div>
-            <a href="https://www.sysceo.com/dc" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+            <a href="https://steampp.net/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
 
-        <!-- 钉钉 -->
+        <h2>聊天社交</h2>
+<!-- 微信 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
+                <img src="https://res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico" alt="微信" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2307c160%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-weight=%22bold%22%3E微信%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>微信</h3>
+                <p>腾讯全能即时通讯，支持文字/语音/视频通话、文件传输、朋友圈、小程序、公众号。Windows/macOS 双端统一体验，扫码登录安全便捷，聊天记录多端实时同步。</p>
+            </div>
+            <a href="https://weixin.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #07c160 0%, #10b981 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- QQ -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+                <img src="https://im.qq.com/favicon.ico" alt="QQ" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3EQQ%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>QQ</h3>
+                <p>经典即时通讯工具，全新 NT 架构，界面简约，支持语音输入与长截图。<br>支持多人语音视频通话、文件传输、QQ空间。<br>全新 UI 设计，消息页面三栏式高效浏览。</p>
+            </div>
+            <a href="https://im.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 钉钉 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
                 <img src="https://www.dingtalk.com/favicon.ico" alt="钉钉" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230284c7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 钉 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>钉钉 <span id="dingtalk-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v8.3.30</span></h3>
+                <h3>钉钉</h3>
                 <p>AI 时代企业协同办公平台，即时沟通、视频会议、智能审批一体化。<br>AI 听记：音视频秒转文字，9 种语言实时翻译，智能提炼核心要点。<br>AI 表格、AI 搜问、钉钉会议、智能人事，150 万家企业信赖之选。</p>
             </div>
             <a href="https://www.dingtalk.com/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
@@ -523,83 +1004,57 @@
                 官方下载
             </a>
         </div>
-        <!-- 元宝 -->
+
+        <h2>办公效率</h2>
+<!-- WPS Office -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
-                <img src="https://yuanbao.qq.com/favicon.ico" alt="元宝" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23a855f7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 元 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                <img src="https://platform.wps.cn/favicon.ico" alt="WPS Office" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%228%22 width=%2236%22 height=%2234%22 rx=%224%22 fill=%22%23f97316%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EWPS%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>元宝 <span id="yuanbao-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.68</span></h3>
-                <p>腾讯 AI 全能助手，深度思考、联网搜索、AI 写作编程识图，混元大模型驱动。<br>AI 搜索：搜得更准答得更全，联网搜索公众号、视频号等腾讯生态信源。<br>AI 文档精读：支持 36 种文件格式，全局划词翻译搜索，迷你对话窗快捷启动。</p>
+                <h3>WPS Office</h3>
+                <p>一站式 AI 智能办公套件，文字/表格/演示/PDF 全覆盖，多端云同步。<br>AI 助手辅助文档创作、PPT 高效制作、PDF 阅读和编辑。<br>兼容 Microsoft Office 格式，海量稻壳模板免费使用。</p>
             </div>
-            <a href="https://yuanbao.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+            <a href="https://platform.wps.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- 7-Zip -->
+<!-- C-Lodop -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
-                <img src="https://www.7-zip.org/favicon.ico" alt="7-Zip" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%226%22 fill=%22%236366f1%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3E7z%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                <img src="https://www.lodop.net/favicon.ico" alt="C-Lodop" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%2210%22 width=%2236%22 height=%2228%22 rx=%223%22 fill=%22%236366f1%22/%3E%3Crect x=%2212%22 y=%2214%22 width=%2224%22 height=%2216%22 rx=%222%22 fill=%22white%22/%3E%3Cline x1=%2224%22 y1=%2234%22 x2=%2224%22 y2=%2242%22 stroke=%22%236366f1%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>7-Zip <span id="7zip-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v26.02</span></h3>
-                <p>开源免费高压缩比文件归档工具，支持 7z/XZ/BZIP2 等格式，轻量无广告。<br>原生 64 位/ARM64 支持，安装包仅 1.6MB，压缩率远超传统工具。<br>AES-256 加密、自解压创建、命令行版本，Windows/Linux/macOS 全平台。</p>
+                <h3>C-Lodop</h3>
+                <p>云打印服务，纯 JS 调用跨浏览器，支持远程集中打印及手机平板打印。<br>WebSocket 通讯速度快，承载超级巨量连续打印业务。<br>安装文件仅 2M 多，部署简单，可免登录作为 Windows 服务运行。</p>
             </div>
-            <a href="https://www.7-zip.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+            <a href="https://www.lodop.net/download.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- 360压缩 -->
+<!-- 格式工厂 -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
-                <img src="https://yasuo.360.cn/favicon.ico" alt="360压缩" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%2322c55e%22/%3E%3Ctext x=%2224%22 y=%2230%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E360%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #27AE60 0%, #1E8449 100%);">
+                <img src="https://www.pcgeshi.com/favicon.ico" alt="格式工厂" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2327AE60%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3E%E6%A0%BC%E5%BC%8F%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>360压缩 <span id="360compress-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.0.0</span></h3>
-                <p>免费无广告压缩工具，支持 42 种格式，内置云安全引擎查杀木马。<br>智能双核引擎极速解压，1GB 大文件仅需 15 秒，压缩效率提升 50%。<br>支持 AES-256 加密与密码管理，全链条文件防护。</p>
+                <h3>格式工厂</h3>
+                <p>免费多功能多媒体格式转换工具，支持视频/音频/图片等几乎所有格式互转</p>
             </div>
-            <a href="https://yasuo.360.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+            <a href="https://www.pcgeshi.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #27AE60 0%, #1E8449 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- Lively Wallpaper -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
-                <img src="https://livelywallpaper.io/favicon.ico" alt="Lively Wallpaper" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23a855f7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EL%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>Lively Wallpaper <span id="lively-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.2.1</span></h3>
-                <p>免费开源动态壁纸，支持视频/GIF/网页/3D 壁纸，多显示器、智能暂停、屏幕保护模式。</p>
-            </div>
-            <a href="https://livelywallpaper.io/zh/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 光影看图 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
-                <img src="https://www.neoimaging.cn/favicon.ico" alt="光影看图" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%233b82f6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E5%85%89%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>光影看图 <span id="neoimaging-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.6.4</span></h3>
-                <p>专业极速看图软件，大图秒开、色彩精准还原，支持直接调用 Photoshop 等编辑工具。</p>
-            </div>
-            <a href="https://www.neoimaging.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 腾讯会议 -->
+<!-- 腾讯会议 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
                 <img src="https://meeting.tencent.com/favicon.ico" alt="腾讯会议" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230ea5e9%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E4%BC%9A%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>腾讯会议 <span id="wemeet-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v3.43.21</span></h3>
+                <h3>腾讯会议</h3>
                 <p>腾讯云视频会议，1080P 高清画质、智能降噪、屏幕共享、云端录制，免费支持 25 人同时参会。</p>
             </div>
             <a href="https://meeting.tencent.com/download/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
@@ -607,13 +1062,364 @@
                 官方下载
             </a>
         </div>
-        <!-- 光影魔术手 -->
+
+        <h2>系统工具</h2>
+<!-- 火绒安全软件 -->
         <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                <img src="https://www.huorong.cn/favicon.ico" alt="火绒安全软件" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Cpath d=%22M24 4L8 14v10c0 10.4 6.8 20.1 16 22 9.2-1.9 16-11.6 16-22V14L24 4z%22 fill=%22%23ef4444%22/%3E%3Cpath d=%22M20 24l3 3 6-6%22 fill=%22none%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>火绒安全软件</h3>
+                <p>轻量无打扰安全防护，集病毒查杀、弹窗拦截、流量监控于一体。<br>基于强大底层技术，反病毒/主动防御/防火墙三大模块深度整合。<br>智能行为分析，不依赖庞大病毒库，系统占用极低。</p>
+            </div>
+            <a href="https://www.huorong.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Everything -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                <img src="https://www.voidtools.com/favicon.ico" alt="Everything" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23f59e0b%22/%3E%3Ctext x=%2224%22 y=%2228%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22%3E🔍%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Everything</h3>
+                <p>毫秒级文件搜索工具，仅索引文件名，极速定位磁盘任意文件。<br>1 秒索引 12 万文件，内存占用仅 14MB，安装包不到 2MB。<br>支持正则表达式、布尔运算符、实时更新，从 Windows 7 到 11 流畅运行。</p>
+            </div>
+            <a href="https://www.voidtools.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 微软电脑管家 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0078d4 0%, #106ebe 100%);">
+                <img src="https://pcmanager.microsoft.com/favicon.ico" alt="微软电脑管家" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%224%22 y=%224%22 width=%2240%22 height=%2240%22 rx=%228%22 fill=%22%230078d4%22/%3E%3Ctext x=%2224%22 y=%2231%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E 微软 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>微软电脑管家</h3>
+                <p>微软官方出品，一键加速、深度清理、弹窗管理，纯净无打扰。<br>系统空间管理：深度清理存储空间，管理大文件，开启磁盘感知。<br>全面体检：快速检测电脑异常，垃圾清理、病毒检测一键解决。</p>
+            </div>
+            <a href="https://pcmanager.microsoft.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0078d4 0%, #106ebe 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Privacy Eraser -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #059669 0%, #10B981 100%);">
+                <img src="https://www.cybertronsoft.com/favicon.ico" alt="Privacy Eraser" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23059669%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3EPE%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Privacy Eraser</h3>
+                <p>Windows隐私清理与优化工具，清除浏览器历史、Cookie、临时文件等200+应用痕迹，支持DoD/NSA安全擦除标准，定时自动清理</p>
+            </div>
+            <a href="https://www.cybertronsoft.com/products/privacy-eraser/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #059669 0%, #10B981 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 7-Zip -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                <img src="https://www.7-zip.org/favicon.ico" alt="7-Zip" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%226%22 fill=%22%236366f1%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3E7z%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>7-Zip</h3>
+                <p>开源免费高压缩比文件归档工具，支持 7z/XZ/BZIP2 等格式，轻量无广告。<br>原生 64 位/ARM64 支持，安装包仅 1.6MB，压缩率远超传统工具。<br>AES-256 加密、自解压创建、命令行版本，Windows/Linux/macOS 全平台。</p>
+            </div>
+            <a href="https://www.7-zip.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 360压缩 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+                <img src="https://yasuo.360.cn/favicon.ico" alt="360压缩" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%2322c55e%22/%3E%3Ctext x=%2224%22 y=%2230%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E360%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>360压缩</h3>
+                <p>免费无广告压缩工具，支持 ZIP/RAR/7Z 等 42 种格式。智能双核引擎极速解压，1GB 大文件仅需 15 秒，压缩效率提升 50%，内置云安全引擎查杀压缩包内木马，支持 AES-256 加密。</p>
+            </div>
+            <a href="https://yasuo.360.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Geek Uninstaller -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
+                <img src="https://geekuninstaller.com/favicon.ico" alt="Geek Uninstaller" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%2210%22 width=%2232%22 height=%2230%22 rx=%224%22 fill=%22%230891b2%22/%3E%3Cline x1=%2216%22 y1=%2218%22 x2=%2232%22 y2=%2218%22 stroke=%22white%22 stroke-width=%223%22/%3E%3Cline x1=%2216%22 y1=%2225%22 x2=%2232%22 y2=%2225%22 stroke=%22white%22 stroke-width=%223%22/%3E%3Cline x1=%2216%22 y1=%2232%22 x2=%2224%22 y2=%2232%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Geek Uninstaller</h3>
+                <p>轻量级卸载利器，单文件绿色便携，深度扫描清理残留文件及注册表。<br>支持强制卸载顽固/损坏程序，原生 x64 运行。<br>可卸载 Microsoft Store 应用，40+ 语言界面，启动迅速。</p>
+            </div>
+            <a href="https://geekuninstaller.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>网络工具</h2>
+<!-- Advanced IP Scanner -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+                <img src="https://www.advanced-ip-scanner.com/favicon.ico" alt="Advanced IP Scanner" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2220%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2229%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EIP%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Advanced IP Scanner</h3>
+                <p>免费网络扫描工具，数秒内扫描局域网设备，支持远程控制及共享访问。<br>多线程扫描技术，每秒可扫描数百台计算机。<br>集成 RDP 和 Radmin 远程控制，支持远程开机/关机、MAC 地址检测。</p>
+            </div>
+            <a href="https://www.advanced-ip-scanner.com/cn/download/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>开发工具</h2>
+<!-- Notepad++ -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
+                <img src="https://notepad-plus-plus.org/favicon.ico" alt="Notepad++" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%224%22 width=%2236%22 height=%2238%22 rx=%224%22 fill=%22%2384cc16%22/%3E%3Ctext x=%2224%22 y=%2230%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3EN%2B%2B%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Notepad++</h3>
+                <p>开源免费代码编辑器，支持 80+ 语言语法高亮和自动补全。多标签编辑、代码折叠、宏录制、正则搜索替换，插件生态丰富，中文界面友好，启动迅速，Windows 平台首选。</p>
+            </div>
+            <a href="https://notepad-plus-plus.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Python -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);">
+                <img src="https://www.python.org/favicon.ico" alt="Python" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%233776AB%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EPy%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Python</h3>
+                <p>万能跨平台编程语言，语法简洁易学，第三方库超 40 万。覆盖 Web 开发、数据分析、AI/机器学习、自动化脚本、网络爬虫等全领域，全球开发者社区最活跃的语言之一。</p>
+            </div>
+            <a href="https://www.python.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- PowerShell -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #012456 0%, #5391FE 100%);">
+                <img src="https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/Powershell_black_64.png" alt="PowerShell" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23012456%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%26gt%3B_%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>PowerShell</h3>
+                <p>Microsoft 开源跨平台命令行 Shell，基于 .NET 构建，支持 Windows、Linux、macOS 三大平台。v7.6 与系统自带 Windows PowerShell 5.1 并行安装互不冲突，提供更强大的脚本语言、远程管理能力和丰富的模块生态，支持管道操作与对象流处理，系统管理自动化利器。</p>
+            </div>
+            <a href="https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #012456 0%, #5391FE 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- .NET -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #512BD4 0%, #6C3BD4 100%);">
+                <img src="https://dotnet.microsoft.com/favicon.ico" alt=".NET" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%228%22%20fill=%22%23512BD4%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2220%22%20font-weight=%22bold%22%3E.NET%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>.NET</h3>
+                <p>Microsoft 推出的免费开源跨平台开发平台，支持 C#、F#、VB.NET 语言，用于构建 Web、移动、桌面、云和 AI 应用。</p>
+            </div>
+            <a href="https://dotnet.microsoft.com" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #512BD4 0%, #6C3BD4 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Trae -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%);">
+                <img src="https://www.trae.ai/favicon.ico" alt="Trae" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%228%22 fill=%22%231E3A5F%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ET%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Trae</h3>
+                <p>字节跳动 AI 编程 IDE，基于 VS Code 架构，支持代码补全、AI 问答、SOLO 自主开发模式。<br>Builder 模式实现需求到代码自动生成，集成终端调试与版本控制一体化工具链，基础版永久免费，全平台支持。</p>
+            </div>
+            <a href="https://www.trae.ai/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- 微软Visual C++ 运行库 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0078D4 0%, #F25022 100%);">
+                <img src="https://support.microsoft.com/favicon.ico" alt="微软Visual C++ 运行库" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%230078D4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3EVC++%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>微软Visual C++ 运行库</h3>
+                <p>微软官方VC++运行库合集（2015-2026），安装后自动为C++程序提供运行时支持，解决缺少msvcp140.dll、vcruntime140.dll等问题</p>
+            </div>
+            <a href="https://support.microsoft.com/zh-cn/topic/2647da03-1eea-4433-9aff-95f26a218cc0" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0078D4 0%, #F25022 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Cheat Engine -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
+                <img src="https://www.cheatengine.org/favicon.ico" alt="Cheat Engine" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%228%22 width=%2232%22 height=%2232%22 rx=%224%22 fill=%22%234f46e5%22/%3E%3Ctext x=%2224%22 y=%2234%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ECE%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Cheat Engine</h3>
+                <p>开源内存修改工具，支持内存扫描/数值锁定/十六进制编辑。内置调试器/反汇编器/代码注入/Lua 脚本扩展，仅限单机游戏学习研究使用，禁止用于网游作弊。</p>
+            </div>
+            <a href="https://www.cheatengine.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>看图工具</h2>
+<!-- 豹图CAD -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                <img src="http://bootgraph.com/favicon.ico" alt="豹图CAD" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2306b6d4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E 豹图CAD %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>豹图CAD</h3>
+                <p>免费 CAD 快速看图算量，支持 DWG 格式、测量标注、分类汇总导出 Excel。<br>无需安装 CAD 即可秒开图纸，支持长度/角度/半径/面积智能测量。<br>独创 CAD 内置算量表格与 Excel 无缝交互，自由编辑、双向反查。</p>
+            </div>
+            <a href="http://bootgraph.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- 2345看图王 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                <img src="https://pic.2345.cc/favicon.ico" alt="2345看图王" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%228%22 width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23f97316%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2211%22 font-weight=%22bold%22%3E2345%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>2345看图王</h3>
+                <p>2345 旗下免费看图软件，支持近百种图片格式，极速打开大图。<br>集看图、编辑、管理于一体，支持 PDF 阅读、图片转换、批量处理。<br>界面简洁清爽，启动速度快，日常看图首选工具。</p>
+            </div>
+            <a href="https://pic.2345.cc/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- 美图看看 -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                <img src="https://www.meitu.com/favicon.ico" alt="美图看看" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23ec4899%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E 美图 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>美图看看</h3>
+                <p>美图旗下轻量看图工具，极速打开各类图片格式。<br>支持图片浏览、简单编辑、格式转换，界面简洁易用。<br>与美图秀秀生态打通，快速跳转深度编辑。</p>
+            </div>
+            <a href="https://xiuxiu.meitu.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- Honeyview -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <img src="https://www.bandisoft.com/favicon.ico" alt="Honeyview" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%228%22 width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2310b981%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2212%22 font-weight=%22bold%22%3EHV%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Honeyview</h3>
+                <p>Bandisoft 出品免费高速图片查看器，支持 BMP/JPG/GIF/PNG/PSD/RAW 等格式。<br>极速渲染不压缩画质，支持 EXIF/GPS 信息查看、幻灯片播放。<br>轻量无广告，支持压缩包内图片直接浏览，支持多国语言。</p>
+            </div>
+            <a href="https://www.bandisoft.com/honeyview/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- ImageGlass -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                <img src="https://imageglass.org/favicon.ico" alt="ImageGlass" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%228%22 y=%228%22 width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%238b5cf6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2211%22 font-weight=%22bold%22%3EIG%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>ImageGlass</h3>
+                <p>开源免费图片查看器，支持 80+ 图片格式，界面简洁现代化。<br>支持 SVG/HEIC/WebP/AVIF/PSD/RAW 等新格式，可自定义主题和扩展。<br>轻量快速，支持缩略图预览、色彩管理、触屏手势操作。</p>
+            </div>
+            <a href="https://imageglass.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- PhotoScape X -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                <img src="https://x.photoscape.org/favicon.ico" alt="PhotoScape X" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2314b8a6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2212%22 font-weight=%22bold%22%3EPSX%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>PhotoScape X</h3>
+                <p>全能型免费图片编辑查看工具，集看图/编辑/批处理/GIF 制作于一体。<br>支持剪切、滤镜、边框、拼贴、批处理、RAW 转换、屏幕截图。<br>界面直观友好，功能丰富堪比轻量 Photoshop，适合摄影爱好者。</p>
+            </div>
+            <a href="https://x.photoscape.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+<!-- XnView MP -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
+                <img src="https://www.xnview.com/favicon.ico" alt="XnView MP" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%224%22 fill=%22%23e11d48%22/%3E%3Ccircle cx=%2218%22 cy=%2220%22 r=%226%22 fill=%22white%22/%3E%3Cpath d=%22M30 34 L44 34%22 stroke=%22white%22 stroke-width=%223%22/%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>XnView MP</h3>
+                <p>全能免费图片浏览器，支持500+格式，批量转换及元数据编辑。<br>支持 JPEG-XL、AVIF、HEIC、WebP、PSD、PDF、RAW 等主流格式。<br>内置批量重命名、重复图片查找、幻灯片、屏幕截图等功能。</p>
+            </div>
+            <a href="https://www.xnview.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- Lively Wallpaper -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <img src="https://livelywallpaper.io/favicon.ico" alt="Lively Wallpaper" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23a855f7%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EL%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>Lively Wallpaper</h3>
+                <p>免费开源动态壁纸，支持视频/GIF/网页/3D 壁纸，多显示器、智能暂停、屏幕保护模式。</p>
+            </div>
+            <a href="https://livelywallpaper.io/zh/download" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 光影看图 -->
+        <div class="software-card">
+            <div class="software-icon" style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                <img src="https://www.neoimaging.cn/favicon.ico" alt="光影看图" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%233b82f6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E5%85%89%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>光影看图</h3>
+                <p>专业极速看图利器，大图秒开无延迟，色彩 ICC 精准还原。支持 PSD/RAW/HEIC/WebP 等多格式，一键调用 Photoshop 等编辑工具，纯看图无冗余功能，摄影后期必备。</p>
+            </div>
+            <a href="https://www.neoimaging.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 光影魔术手 -->
+        <div class="software-card">
             <div class="software-icon" style="background:linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);">
                 <img src="https://www.neoimaging.cn/favicon.ico" alt="光影魔术手" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%234A90D9%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E%E5%85%89%E5%BD%B1%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>光影魔术手 <span id="neoimaging-magic-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v4.7.4.1230</span></h3>
+                <h3>光影魔术手</h3>
                 <p>免费修图软件，AI智能抠图、人像美容、智能调色、批量处理、证件照排版</p>
             </div>
             <a href="https://www.neoimaging.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);">
@@ -622,41 +1428,58 @@
             </a>
         </div>
 
-        <!-- Python -->
+        <h2>驱动相关</h2>
+<!-- 驱动总裁 -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);">
-                <img src="https://www.python.org/favicon.ico" alt="Python" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%233776AB%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EPy%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                <img src="https://www.sysceo.com/favicon.ico" alt="驱动总裁" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%2210%22 width=%2236%22 height=%2228%22 rx=%224%22 fill=%22%232563eb%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E 驱动 %3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Python <span id="python-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v3.14.4</span></h3>
-                <p>跨平台编程语言，简洁易学、生态丰富，适用于Web开发、数据分析、AI/机器学习</p>
+                <h3>驱动总裁</h3>
+                <p>全能驱动管理工具，在线离线双模式，笔记本台式机苹果 BootCamp 全兼容。<br>集在线和离线双模式，桌面和 PE 环境下均可安装硬件驱动。<br>庞大丰富的驱动库，界面友好，轻松解决硬件驱动各种问题。</p>
             </div>
-            <a href="https://www.python.org/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);">
+            <a href="https://www.sysceo.com/dc" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- 格式工厂 -->
+<!-- 英特尔驱动程序和支持助理 -->
         <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #27AE60 0%, #1E8449 100%);">
-                <img src="https://www.pcgeshi.com/favicon.ico" alt="格式工厂" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2327AE60%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22 font-weight=%22bold%22%3E%E6%A0%BC%E5%BC%8F%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0071C5 0%, #00AEEF 100%);">
+                <img src="https://www.intel.com/favicon.ico" alt="英特尔驱动程序和支持助理" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%226%22 fill=%22%230071C5%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3Eintel%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>格式工厂 <span id="geshi-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v5.22.0.0</span></h3>
-                <p>免费多功能多媒体格式转换工具，支持视频/音频/图片等几乎所有格式互转</p>
+                <h3>英特尔驱动程序和支持助理</h3>
+                <p>英特尔官方驱动更新工具，自动检测 CPU、显卡、网卡、芯片组等英特尔硬件型号，提供定制化驱动和软件更新列表。<br>一键下载安装最新驱动，保持系统最佳性能与稳定性，支持 Windows 10/11。</p>
             </div>
-            <a href="https://www.pcgeshi.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #27AE60 0%, #1E8449 100%);">
+            <a href="https://www.intel.com/content/www/us/en/support/detect.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0071C5 0%, #00AEEF 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- EV录屏 -->
+<!-- NVIDIA 显卡驱动 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #76B900 0%, #000000 100%);">
+                <img src="https://www.nvidia.cn/favicon.ico" alt="NVIDIA 显卡驱动" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%226%22 y=%226%22 width=%2236%22 height=%2236%22 rx=%226%22 fill=%22%2376B900%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3ENV%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>NVIDIA 显卡驱动</h3>
+                <p>NVIDIA 官方 GeForce Game Ready 驱动，为最新游戏提供 DLSS 和 RTX 技术优化。支持 GeForce RTX 50/40/30/20 全系列显卡，WHQL 认证稳定可靠，内置 NVIDIA App 可自动检测并更新驱动，一劳永逸解决游戏卡顿、画面撕裂、驱动过旧等问题。</p>
+            </div>
+            <a href="https://www.nvidia.cn/geforce/drivers/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #76B900 0%, #000000 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>录屏工具</h2>
+<!-- EV录屏 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);">
                 <img src="https://www.ieway.cn/favicon.ico" alt="EV录屏" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2300BCD4%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EEV%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>EV录屏 <span id="evcapture-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v5.5.5</span></h3>
+                <h3>EV录屏</h3>
                 <p>免费无水印录屏+直播推流，支持全屏/选区/摄像头画中画，1080P 60FPS</p>
             </div>
             <a href="https://www.ieway.cn/evcapture.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);">
@@ -664,69 +1487,43 @@
                 官方下载
             </a>
         </div>
-        <!-- Recordly录屏 -->
+<!-- Recordly录屏 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);">
                 <img src="https://www.recordly.dev/favicon.ico" alt="Recordly录屏" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%239B59B6%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2222%22 font-weight=%22bold%22%3ER%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>Recordly录屏 <span id="recordly-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v0.4.3</span></h3>
-                <p>开源屏幕录制与编辑工具，零剪辑基础制作专业演示视频，跨平台支持</p>
+                <h3>Recordly录屏</h3>
+                <p>开源屏幕录制与编辑工具，零基础快速制作专业演示视频。支持摄像头画中画、系统声音与麦克风同步录制，跨平台 Windows/macOS/Linux，轻量无广告，视频即录即剪。</p>
             </div>
             <a href="https://www.recordly.dev/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- 抖音 -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #1A1A1A 0%, #000000 100%);">
-                <img src="https://www.douyin.com/favicon.ico" alt="抖音" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231A1A1A%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E6%8A%96%E9%9F%B3%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>抖音 <span id="douyin-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v8.0.0</span></h3>
-                <p>短视频平台PC客户端，大屏刷抖音，智能匹配音乐、一键卡点、镜面场景切换</p>
-            </div>
-            <a href="https://www.douyin.com/downloadpage" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1A1A1A 0%, #000000 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- 4DDiG DLL Fixer -->
-        <div class="software-card" style="margin-top:24px;">
-            <div class="software-icon" style="background:linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);">
-                <img src="https://4ddig.tenorshare.com/favicon.ico" alt="4DDiG DLL Fixer" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23E74C3C%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E4D%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
-            </div>
-            <div class="software-info">
-                <h3>4DDiG DLL Fixer <span id="ddig-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v1.0.8.2</span></h3>
-                <p>系统DLL修复工具，一键扫描修复缺失/损坏DLL，解决程序启动异常、游戏报错</p>
-            </div>
-            <a href="https://4ddig.tenorshare.com/dll-fixer.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                官方下载
-            </a>
-        </div>
-        <!-- QQ拼音输入法 -->
+
+        <h2>输入法</h2>
+<!-- QQ拼音输入法 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #12B7F5 0%, #0D9ED9 100%);">
                 <img src="https://qq.pinyin.cn/favicon.ico" alt="QQ拼音" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%2312B7F5%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E%E6%8B%BC%E9%9F%B3%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>QQ拼音输入法 <span id="qqpinyin-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v6.6.6304.400</span></h3>
-                <p>腾讯官方输入法，拼音/五笔/手写/语音皆可输入，词库丰富，清爽无广告</p>
+                <h3>QQ拼音输入法</h3>
+                <p>腾讯官方拼音输入法，支持全拼/双拼/笔画/手写/语音输入。海量词库云端同步，智能纠错与联想，皮肤丰富可自定义，清爽无弹窗无广告，输入流畅响应迅速。</p>
             </div>
             <a href="https://qq.pinyin.cn/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #12B7F5 0%, #0D9ED9 100%);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 官方下载
             </a>
         </div>
-        <!-- QQ五笔输入法 -->
+<!-- QQ五笔输入法 -->
         <div class="software-card" style="margin-top:24px;">
             <div class="software-icon" style="background:linear-gradient(135deg, #FF8C00 0%, #2196F3 100%);">
                 <img src="https://qq.pinyin.cn/favicon.ico" alt="QQ五笔" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23FF8C00%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E%E4%BA%94%E7%AC%94%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
             </div>
             <div class="software-info">
-                <h3>QQ五笔输入法 <span id="qqwubi-version" style="font-size:0.75em;color:#94a3b8;font-weight:400;">v2.4.629.400</span></h3>
+                <h3>QQ五笔输入法</h3>
                 <p>腾讯官方五笔输入法，各输入风格平滑切换，分类词库、网络同步、精美皮肤</p>
             </div>
             <a href="https://qq.pinyin.cn/wubi/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF8C00 0%, #2196F3 100%);">
@@ -734,8 +1531,158 @@
                 官方下载
             </a>
         </div>
+<!-- 搜狗拼音输入法 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #FF6300 0%, #1677FF 100%);">
+                <img src="https://shurufa.sogou.com/favicon.ico" alt="搜狗拼音输入法" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23FF6300%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E6%90%9C%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>搜狗拼音输入法</h3>
+                <p>搜狗出品国民级拼音输入法，6亿用户之选。搭载AI联想引擎整句准确率提升15%，400亿+词库，支持语音/手写/五笔混合输入。纯净模式一键关闭广告，云端词库同步，海量皮肤随心换，Windows全系列兼容。</p>
+            </div>
+            <a href="https://shurufa.sogou.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #FF6300 0%, #1677FF 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 搜狗五笔输入法 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1677FF 0%, #10B981 100%);">
+                <img src="https://wubi.sogou.com/favicon.ico" alt="搜狗五笔输入法" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%231677FF%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E4%BA%94%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>搜狗五笔输入法</h3>
+                <p>搜狗出品专业五笔输入法，永久免费无广告。支持五笔拼音混合输入、纯五笔、纯拼音多模式切换，兼容搜狗拼音细胞词库与皮肤。86/98/新世纪版编码自由选择，词库云端同步，五笔学习者的首选工具。</p>
+            </div>
+            <a href="https://wubi.sogou.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1677FF 0%, #10B981 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 百度输入法PC版 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #EF4444 0%, #3B82F6 100%);">
+                <img src="https://shurufa.baidu.com/favicon.ico" alt="百度输入法PC版" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23EF4444%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E7%99%BE%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>百度输入法PC版</h3>
+                <p>百度出品智能拼音输入法，依托百度搜索技术精准匹配。支持全拼/简拼/中英混拼，内置AI超会写辅助创作。语音/手写/五笔/笔画多模式集成，离线语音媲美在线，海量颜文字与皮肤，无广告绿色纯净。</p>
+            </div>
+            <a href="https://shurufa.baidu.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #EF4444 0%, #3B82F6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 微信输入法 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #07C160 0%, #34D399 100%);">
+                <img src="https://z.weixin.qq.com/favicon.ico" alt="微信输入法" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%2307C160%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E5%BE%AE%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>微信输入法</h3>
+                <p>微信官方跨平台智能输入法（Win/Mac/Android/iOS）。支持跨设备复制粘贴、词库与常用语同步，智能输入模式精准匹配候选词。支持拼写Plus、符号配对、自定义短语，界面极简流畅无打扰。</p>
+            </div>
+            <a href="https://z.weixin.qq.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #07C160 0%, #34D399 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 万能五笔 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F97316 0%, #EF4444 100%);">
+                <img src="https://wnwb.com/favicon.ico" alt="万能五笔" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23F97316%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E4%B8%87%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>万能五笔</h3>
+                <p>中国首创多元输入法，集五笔、拼音、英语、笔画、拼音+笔画于一体。自带10万大词库，支持DIY码表组合，个性化换肤。基于云端技术提升拼音准确率，外挂版/内置版双版本可选，永久免费。</p>
+            </div>
+            <a href="https://wnwb.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F97316 0%, #EF4444 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 小狼毫Rime -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #64748B 0%, #14B8A6 100%);">
+                <img src="https://rime.im/favicon.ico" alt="小狼毫Rime" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%2364748B%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3ER%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>小狼毫Rime</h3>
+                <p>开源跨平台Rime输入法引擎的Windows前端。支持拼音/注音/仓颉/五笔/双拼/粤拼/吴语等数十种输入方案，高度可定制YAML配置。无广告无追踪，完全由用户掌控输入体验，极客首选。</p>
+            </div>
+            <a href="https://rime.im/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #64748B 0%, #14B8A6 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 手心输入法 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #F59E0B 0%, #EC4899 100%);">
+                <img src="https://xinshuru.com/favicon.ico" alt="手心输入法" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%23F59E0B%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E6%89%8B%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>手心输入法</h3>
+                <p>无广告纯净智能拼音输入法，千万用户信赖之选。深度学习词库搭配语境感知技术，智能纠错精准联想，语音识别支持方言。内存占用低于同类60%，安装包仅28MB，启动毫秒级，干净高效。</p>
+            </div>
+            <a href="https://xinshuru.com/" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #F59E0B 0%, #EC4899 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+<!-- 冰凌五笔 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);">
+                <img src="https://icesofts.com/favicon.ico" alt="冰凌五笔" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2048%2048%22%3E%3Crect%20x=%226%22%20y=%226%22%20width=%2236%22%20height=%2236%22%20rx=%226%22%20fill=%22%230EA5E9%22/%3E%3Ctext%20x=%2224%22%20y=%2232%22%20text-anchor=%22middle%22%20fill=%22white%22%20font-size=%2218%22%20font-weight=%22bold%22%20font-family=%22monospace%22%3E%E5%86%B0%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>冰凌五笔</h3>
+                <p>以86版五笔字型为基础的纯净输入法平台。支持纯码/混合/临时拼音输入，可挂接第三方码表方案。无捆绑无广告无弹窗不骚扰，不收集用户任何信息，支持Win7及以上全平台，专注输入本质。</p>
+            </div>
+            <a href="https://icesofts.com/download.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>短视频</h2>
+<!-- 抖音 -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #1A1A1A 0%, #000000 100%);">
+                <img src="https://www.douyin.com/favicon.ico" alt="抖音" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%231A1A1A%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3E%E6%8A%96%E9%9F%B3%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>抖音</h3>
+                <p>短视频平台PC客户端，大屏刷抖音，智能匹配音乐、一键卡点、镜面场景切换</p>
+            </div>
+            <a href="https://www.douyin.com/downloadpage" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #1A1A1A 0%, #000000 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
+
+        <h2>系统修复</h2>
+<!-- 4DDiG DLL Fixer -->
+        <div class="software-card" style="margin-top:24px;">
+            <div class="software-icon" style="background:linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);">
+                <img src="https://4ddig.tenorshare.com/favicon.ico" alt="4DDiG DLL Fixer" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2222%22 fill=%22%23E74C3C%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-weight=%22bold%22%3E4D%3C/text%3E%3C/svg%3E'" style="width:48px;height:48px;border-radius:12px;">
+            </div>
+            <div class="software-info">
+                <h3>4DDiG DLL Fixer</h3>
+                <p>系统DLL修复工具，一键扫描修复缺失/损坏DLL，解决程序启动异常、游戏报错</p>
+            </div>
+            <a href="https://4ddig.tenorshare.com/dll-fixer.html" target="_blank" class="btn-download" style="background:linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                官方下载
+            </a>
+        </div>
     </div>
-</section>
+    </section>
+
+    <footer class="site-footer">
+        <p>© 2026 FXZ·分享站 | 非盈利个人软件分享站</p>
+        <p>所有软件名称、图标、商标归各自权利人所有。下载链接均指向官方渠道，本站不存储安装包。</p>
+        <p><a href="disclaimer.html">免责声明</a> | 联系邮箱：<a href="mailto:ZHUOJUNJING@HOTMAIL.COM">ZHUOJUNJING@HOTMAIL.COM</a></p>
+    </footer>
 
 <script>
 (function() {
@@ -964,6 +1911,54 @@
             }
         })
         .catch(() => {});
+})();
+</script>
+
+<script>
+(function() {
+    var input = document.getElementById('search-input');
+    var clearBtn = document.getElementById('search-clear');
+    var noResult = document.getElementById('search-no-result');
+    var cards = document.querySelectorAll('.software-card');
+    var headings = document.querySelectorAll('.software-section h2');
+
+    function getCardText(card) {
+        return (card.textContent || card.innerText).replace(/\s+/g, ' ').toLowerCase();
+    }
+
+    input.addEventListener('input', function() {
+        var raw = input.value.trim();
+        clearBtn.style.display = raw ? 'block' : 'none';
+
+        if (!raw) {
+            for (var i = 0; i < cards.length; i++) cards[i].style.display = '';
+            for (var j = 0; j < headings.length; j++) headings[j].style.display = '';
+            noResult.style.display = 'none';
+            return;
+        }
+
+        var keywords = raw.toLowerCase().split(/\s+/).filter(Boolean);
+        var visibleCount = 0;
+
+        for (var i = 0; i < cards.length; i++) {
+            var text = getCardText(cards[i]);
+            var match = true;
+            for (var k = 0; k < keywords.length; k++) {
+                if (text.indexOf(keywords[k]) === -1) { match = false; break; }
+            }
+            cards[i].style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+        }
+
+        for (var j = 0; j < headings.length; j++) headings[j].style.display = 'none';
+        noResult.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+
+    clearBtn.addEventListener('click', function() {
+        input.value = '';
+        input.dispatchEvent(new Event('input'));
+        input.focus();
+    });
 })();
 </script>
 
